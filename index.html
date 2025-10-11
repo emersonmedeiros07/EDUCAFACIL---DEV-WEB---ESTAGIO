@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escola Dom Paulo - Sistema de Gestão</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    
+    <div class="auth-page" id="authPage">
+        <div class="auth-container">
+            <div class="auth-form-container" id="authFormContainer">
+                <!-- Login -->
+                <div class="auth-form active" id="loginFormContainer">
+                    <div class="auth-left">
+                        <div class="auth-logo">Escola Dom Paulo</div>
+                        <h1 class="auth-title">Sistema de Gestão Escolar</h1>
+                        <p class="auth-subtitle">Acesso exclusivo para administradores e equipe gestora</p>
+                        <ul class="auth-features">
+                            <li>Gerencie alunos, turmas e professores</li>
+                            <li>Controle de frequência e notas</li>
+                            <li>Relatórios e documentos automatizados</li>
+                            <li>Calendário escolar integrado</li>
+                            <li>Comunicação com pais e responsáveis</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="auth-right">
+                        <div class="form-container">
+                            <h2 class="form-title">Fazer Login</h2>
+                            
+                            <div class="error-message" id="loginErrorMessage">
+                                E-mail ou senha incorretos. Tente novamente.
+                            </div>
+                            
+                            <form id="loginForm">
+                                <div class="form-group">
+                                    <label for="email" class="form-label">E-mail</label>
+                                    <input type="email" id="email" class="form-input" placeholder="seu.email@escola.edu.br" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="password" class="form-label">Senha</label>
+                                    <div class="password-toggle">
+                                        <input type="password" id="password" class="form-input" placeholder="Sua senha" required>
+                                        <button type="button" class="toggle-password" id="togglePassword">👁️</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-options">
+                                    <label class="remember-me">
+                                        <input type="checkbox" id="rememberMe"> Lembrar-me
+                                    </label>
+                                    <a class="forgot-password" id="showRecovery">Esqueceu a senha?</a>
+                                </div>
+                                
+                                <button type="submit" class="auth-button" id="loginButton">Entrar</button>
+                            </form>
+                            
+                            <div class="divider">
+                                <span>Ou entre com</span>
+                            </div>
+                            
+                            <div class="social-auth">
+                                <button class="social-button google">Google</button>
+                                <button class="social-button microsoft">Microsoft</button>
+                            </div>
+                            
+                            <div class="auth-link">
+                                Não tem uma conta? <a id="showRegister">Solicitar acesso</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Registro -->
+                <div class="auth-form" id="registerFormContainer">
+                    <div class="auth-left">
+                        <div class="auth-logo">Escola Dom Paulo</div>
+                        <h1 class="auth-title">Solicitar Acesso</h1>
+                        <p class="auth-subtitle">Preencha o formulário para solicitar acesso ao sistema</p>
+                        <ul class="auth-features">
+                            <li>Acesso rápido após aprovação</li>
+                            <li>Suporte completo da equipe técnica</li>
+                            <li>Documentação e tutoriais disponíveis</li>
+                            <li>Integração com sistemas existentes</li>
+                            <li>Segurança e privacidade garantidas</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="auth-right">
+                        <div class="form-container">
+                            <h2 class="form-title">Solicitar Acesso</h2>
+                            
+                            <div class="error-message" id="registerErrorMessage">
+                                Por favor, preencha todos os campos obrigatórios.
+                            </div>
+                            
+                            <div class="success-message" id="registerSuccessMessage">
+                                Solicitação enviada com sucesso! Aguarde a aprovação.
+                            </div>
+                            
+                            <form id="registerForm">
+                                <div class="form-group">
+                                    <label for="fullName" class="form-label">Nome Completo *</label>
+                                    <input type="text" id="fullName" class="form-input" placeholder="Seu nome completo" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="registerEmail" class="form-label">E-mail *</label>
+                                    <input type="email" id="registerEmail" class="form-input" placeholder="seu.email@escola.edu.br" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="phone" class="form-label">Telefone *</label>
+                                    <input type="tel" id="phone" class="form-input" placeholder="(11) 99999-9999" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="position" class="form-label">Cargo/Função *</label>
+                                    <select id="position" class="form-input" required>
+                                        <option value="">Selecione seu cargo</option>
+                                        <option value="diretor">Diretor</option>
+                                        <option value="coordenador">Coordenador</option>
+                                        <option value="secretario">Secretário</option>
+                                        <option value="professor">Professor</option>
+                                        <option value="assistente">Assistente</option>
+                                        <option value="outro">Outro</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="department" class="form-label">Departamento/Setor</label>
+                                    <input type="text" id="department" class="form-input" placeholder="Ex: Secretaria, Coordenação">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="reason" class="form-label">Motivo da Solicitação *</label>
+                                    <textarea id="reason" class="form-input" rows="3" placeholder="Descreva brevemente por que precisa de acesso ao sistema" required></textarea>
+                                </div>
+                                
+                                <button type="submit" class="auth-button" id="registerButton">Enviar Solicitação</button>
+                            </form>
+                            
+                            <div class="auth-link">
+                                Já tem uma conta? <a id="showLogin">Fazer login</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recuperacao -->
+                <div class="auth-form" id="recoveryFormContainer">
+                    <div class="auth-left">
+                        <div class="auth-logo">Escola Dom Paulo</div>
+                        <h1 class="auth-title">Recuperar Senha</h1>
+                        <p class="auth-subtitle">Siga os passos para redefinir sua senha de acesso</p>
+                        <ul class="auth-features">
+                            <li>Receba um código de verificação por e-mail</li>
+                            <li>Insira o código para validar sua identidade</li>
+                            <li>Crie uma nova senha segura</li>
+                            <li>Acesse sua conta com a nova senha</li>
+                            <li>Suporte disponível em caso de problemas</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="auth-right">
+                        <div class="form-container">
+                            <h2 class="form-title">Recuperar Senha</h2>
+                            
+                            <div class="error-message" id="recoveryErrorMessage">
+                                Ocorreu um erro. Tente novamente.
+                            </div>
+                            
+                            <div class="success-message" id="recoverySuccessMessage">
+                                Código enviado com sucesso! Verifique seu e-mail.
+                            </div>
+                            
+                            
+                            <div class="recovery-steps">
+                                <div class="step active" id="step1">
+                                    <div class="step-number">1</div>
+                                    <div class="step-label">E-mail</div>
+                                </div>
+                                <div class="step" id="step2">
+                                    <div class="step-number">2</div>
+                                    <div class="step-label">Código</div>
+                                </div>
+                                <div class="step" id="step3">
+                                    <div class="step-number">3</div>
+                                    <div class="step-label">Nova Senha</div>
+                                </div>
+                            </div>
+                            
+                            
+                            <form class="recovery-form active" id="recoveryStep1">
+                                <div class="form-group">
+                                    <label for="recoveryEmail" class="form-label">E-mail cadastrado</label>
+                                    <input type="email" id="recoveryEmail" class="form-input" placeholder="seu.email@escola.edu.br" required>
+                                </div>
+                                
+                                <button type="submit" class="auth-button" id="sendCodeButton">Enviar Código</button>
+                                
+                                <div class="auth-link">
+                                    Lembrou sua senha? <a id="backToLoginFromRecovery">Fazer login</a>
+                                </div>
+                            </form>
+                            
+                            
+                            <form class="recovery-form" id="recoveryStep2">
+                                <div class="form-group">
+                                    <label class="form-label">Código de verificação</label>
+                                    <div class="code-inputs">
+                                        <input type="text" maxlength="1" class="code-input" id="code1" required>
+                                        <input type="text" maxlength="1" class="code-input" id="code2" required>
+                                        <input type="text" maxlength="1" class="code-input" id="code3" required>
+                                        <input type="text" maxlength="1" class="code-input" id="code4" required>
+                                        <input type="text" maxlength="1" class="code-input" id="code5" required>
+                                        <input type="text" maxlength="1" class="code-input" id="code6" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="resend-code" id="resendCodeContainer">
+                                    Não recebeu o código? <a id="resendCode">Reenviar</a>
+                                </div>
+                                
+                                <button type="submit" class="auth-button" id="verifyCodeButton">Verificar Código</button>
+                                
+                                <div class="auth-link">
+                                    <a href="#" id="backToEmailStep">Voltar</a>
+                                </div>
+                            </form>
+                            
+                           
+                            <form class="recovery-form" id="recoveryStep3">
+                                <div class="form-group">
+                                    <label for="newPassword" class="form-label">Nova Senha</label>
+                                    <div class="password-toggle">
+                                        <input type="password" id="newPassword" class="form-input" placeholder="Digite sua nova senha" required>
+                                        <button type="button" class="toggle-password" id="toggleNewPassword">👁️</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="confirmPassword" class="form-label">Confirmar Nova Senha</label>
+                                    <div class="password-toggle">
+                                        <input type="password" id="confirmPassword" class="form-input" placeholder="Confirme sua nova senha" required>
+                                        <button type="button" class="toggle-password" id="toggleConfirmPassword">👁️</button>
+                                    </div>
+                                </div>
+                                
+                                <button type="submit" class="auth-button" id="resetPasswordButton">Redefinir Senha</button>
+                                
+                                <div class="auth-link">
+                                    <a href="#" id="backToCodeStep">Voltar</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+    <div class="app-container" id="appContainer">
+        
+        <header class="header">
+            <div class="logo">Escola Dom Paulo</div>
+            <div class="search-bar">
+                <input type="text" placeholder="Pesquisar...">
+            </div>
+            <div class="user-info">
+                <div class="notification-bell">🔔</div>
+                <span class="user-name">Admin</span>
+                <button class="btn" id="logoutBtn">Sair</button>
+            </div>
+        </header>
+
+        
+        <nav class="sidebar">
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active" data-page="dashboard">Painel</a></li>
+                <li><a href="#" data-page="students">Alunos</a></li>
+                <li><a href="#" data-page="staff">Equipe Gestora</a></li>
+                <li><a href="#" data-page="classes">Turmas</a></li>
+                <li><a href="#" data-page="schedule">Horário</a></li>
+                <li><a href="#" data-page="reports">Relatórios</a></li>
+                <li><a href="#" data-page="calendar">Calendário</a></li>
+                <li><a href="#" data-page="users">Usuários</a></li>
+                <li><a href="#" data-page="settings">Configurações</a></li>
+            </ul>
+        </nav>
+
+        
+        <main class="main-content">
+            
+            <div class="page active" id="dashboard">
+                <div class="page-header">
+                    <h1 class="page-title">Painel</h1>
+                    <p class="page-subtitle">Bem vindo à secretaria digital</p>
+                </div>
+
+                
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-icon blue">👥</div>
+                        <div class="metric-content">
+                            <h3>1,234</h3>
+                            <p>Total de Alunos</p>
+                            <div class="metric-change positive">+3,5% este mês</div>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon green">🏫</div>
+                        <div class="metric-content">
+                            <h3>48</h3>
+                            <p>Total de Turmas</p>
+                            <div class="metric-change">estável</div>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon purple">📅</div>
+                        <div class="metric-content">
+                            <h3>12</h3>
+                            <p>Eventos</p>
+                            <div class="metric-change negative">+2,5% próximos 30 dias</div>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon orange">📊</div>
+                        <div class="metric-content">
+                            <h3>8.6</h3>
+                            <p>Média de Notas</p>
+                            <div class="metric-change positive">+0,8% último bimestre</div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="content-grid">
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3 class="chart-title">Estatísticas de Frequência</h3>
+                        </div>
+                        <table class="frequency-table">
+                            <thead>
+                                <tr>
+                                    <th>Tipo</th>
+                                    <th>Seg</th>
+                                    <th>Ter</th>
+                                    <th>Qua</th>
+                                    <th>Qui</th>
+                                    <th>Sex</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Presentes</td>
+                                    <td>95%</td>
+                                    <td>92%</td>
+                                    <td>97%</td>
+                                    <td>94%</td>
+                                    <td>96%</td>
+                                </tr>
+                                <tr>
+                                    <td>Faltas</td>
+                                    <td>5%</td>
+                                    <td>8%</td>
+                                    <td>3%</td>
+                                    <td>6%</td>
+                                    <td>4%</td>
+                                </tr>
+                                <tr>
+                                    <td>Atrasos</td>
+                                    <td>2%</td>
+                                    <td>3%</td>
+                                    <td>1%</td>
+                                    <td>2%</td>
+                                    <td>1%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="events-container">
+                        <div class="section-header">
+                            <h3 class="section-title">Próximos Eventos</h3>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-icon meeting">👥</div>
+                            <div class="event-details">
+                                <h4>Reunião de pais e mestres</h4>
+                                <div class="event-date">20 de junho de 2023</div>
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-icon grades">📊</div>
+                            <div class="event-details">
+                                <h4>Fechamento de notas bimestrais</h4>
+                                <div class="event-date">08 de julho de 2023</div>
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-icon party">🎉</div>
+                            <div class="event-details">
+                                <h4>Festa junina escolar</h4>
+                                <div class="event-date">10 de julho de 2023</div>
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-icon holiday">🏖️</div>
+                            <div class="event-details">
+                                <h4>Início das férias escolares</h4>
+                                <div class="event-date">28 de julho de 2023</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="activity-list">
+                    <div class="section-header">
+                        <h3 class="section-title">Atividades Recentes</h3>
+                        <a href="#" class="btn">Ver todas</a>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon presence">👥</div>
+                        <div class="activity-content">
+                            <p>Ana registrou presença para a turma 9B</p>
+                            <div class="activity-time">2 horas atrás</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon grades">📝</div>
+                        <div class="activity-content">
+                            <p>João registrou notas para Matemática do 7A</p>
+                            <div class="activity-time">3 horas atrás</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon event">📅</div>
+                        <div class="activity-content">
+                            <p>Pedro adicionou um novo evento no calendário</p>
+                            <div class="activity-time">5 horas atrás</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon edit">✏️</div>
+                        <div class="activity-content">
+                            <p>Juliana editou informações do aluno Carlos Mendes</p>
+                            <div class="activity-time">6 horas atrás</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="page" id="students">
+                <div class="page-header">
+                    <h1 class="page-title">Alunos</h1>
+                    <p class="page-subtitle">Gerencie todos os alunos cadastrados</p>
+                </div>
+
+                <div class="data-table">
+                    <div class="table-header">
+                        <div class="search-bar">
+                            <input type="text" placeholder="Buscar alunos...">
+                        </div>
+                        <div class="table-actions">
+                            <button class="btn primary" id="addStudentBtn">+ Adicionar Aluno</button>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Ano</th>
+                                <th>Turma</th>
+                                <th>Status</th>
+                                <th>Última Atualização</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ana Silva</td>
+                                <td>9º ano</td>
+                                <td>9B</td>
+                                <td><span class="status-badge active">Ativo</span></td>
+                                <td>26/04/2023</td>
+                                <td class="actions">
+                                    <button class="action-btn edit">✏️</button>
+                                    <button class="action-btn delete">🗑️</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Carlos Oliveira</td>
+                                <td>7º ano</td>
+                                <td>7A</td>
+                                <td><span class="status-badge active">Ativo</span></td>
+                                <td>26/04/2023</td>
+                                <td class="actions">
+                                    <button class="action-btn edit">✏️</button>
+                                    <button class="action-btn delete">🗑️</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Juliana Santos</td>
+                                <td>10º ano</td>
+                                <td>10C</td>
+                                <td><span class="status-badge active">Ativo</span></td>
+                                <td>27/06/2023</td>
+                                <td class="actions">
+                                    <button class="action-btn edit">✏️</button>
+                                    <button class="action-btn delete">🗑️</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Pedro Almeida</td>
+                                <td>8º ano</td>
+                                <td>8B</td>
+                                <td><span class="status-badge active">Ativo</span></td>
+                                <td>26/04/2023</td>
+                                <td class="actions">
+                                    <button class="action-btn edit">✏️</button>
+                                    <button class="action-btn delete">🗑️</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Mariana Costa</td>
+                                <td>11º ano</td>
+                                <td>11A</td>
+                                <td><span class="status-badge active">Ativo</span></td>
+                                <td>26/04/2023</td>
+                                <td class="actions">
+                                    <button class="action-btn edit">✏️</button>
+                                    <button class="action-btn delete">🗑️</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            
+            <div class="page" id="staff">
+                <div class="page-header">
+                    <h1 class="page-title">Equipe Gestora</h1>
+                    <p class="page-subtitle">Gerencie os membros da equipe gestora da instituição</p>
+                </div>
+
+                <div class="data-table">
+                    <div class="table-header">
+                        <div class="search-bar">
+                            <input type="text" placeholder="Buscar membros...">
+                        </div>
+                        <div class="table-actions">
+                            <button class="btn primary" id="addStaffBtn">+ Adicionar Membro</button>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Cargo</th>
+                                <th>Matrícula</th>
+                                <th>E-mail</th>
+                                <th>Telefone</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ana Maria Silva</td>
+                                <td>Diretora</td>
+                                <td>12345</td>
+                                <td>ana.silva@escola.edu.br</td>
+                                <td>(11) 99999-1234</td>
+                                <td><span class="status-badge active">Ativo</span></td>
+                                <td class="actions">
+                                    <button class="action-btn edit">✏️</button>
+                                    <button class="action-btn delete">🗑️</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>João Santos</td>
+                                <td>Coordenador</td>
+                                <td>23456</td>
+                                <td>joao.santos@escola.edu.br</td>
+                                <td>(11) 98888-5678</td>
+                                <td><span class="status-badge active">Ativo</span></td>
+                                <td class="actions">
+                                    <button class="action-btn edit">✏️</button>
+                                    <button class="action-btn delete">🗑️</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Maria Costa</td>
+                                <td>Secretária</td>
+                                <td>34567</td>
+                                <td>maria.costa@escola.edu.br</td>
+                                <td>(11) 97777-9012</td>
+                                <td><span class="status-badge active">Ativo</span></td>
+                                <td class="actions">
+                                    <button class="action-btn edit">✏️</button>
+                                    <button class="action-btn delete">🗑️</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            
+            <div class="page" id="classes">
+                <div class="page-header">
+                    <h1 class="page-title">Turmas</h1>
+                    <p class="page-subtitle">Gerencie todas as turmas da escola</p>
+                </div>
+
+                <div class="data-table">
+                    <div class="table-header">
+                        <div style="display: flex; gap: 15px; align-items: center;">
+                            <div>
+                                <label for="year-select">Ano Letivo:</label>
+                                <select id="year-select" class="btn">
+                                    <option>2024</option>
+                                    <option>2023</option>
+                                    <option>2022</option>
+                                </select>
+                            </div>
+                            <div class="search-bar">
+                                <input type="text" placeholder="Buscar turmas...">
+                            </div>
+                        </div>
+                        <div class="table-actions">
+                            <button class="btn primary" id="addClassBtn">+ Adicionar Turma</button>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Turma</th>
+                                <th>Professor 1</th>
+                                <th>Professor 2</th>
+                                <th>Período</th>
+                                <th>Capacidade</th>
+                                <th>Alunos</th>
+                                <th>Ano</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1A</td>
+                                <td>Maria Silva</td>
+                                <td>João Pereira</td>
+                                <td>Manhã</td>
+                                <td>30</td>
+                                <td>28</td>
+                                <td>1º ano</td>
+                                <td class="actions">
+                                    <button class="action-btn edit">✏️</button>
+                                    <button class="action-btn delete">🗑️</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2B</td>
+                                <td>Ana Oliveira</td>
+                                <td>Carlos Mendes</td>
+                                <td>Tarde</td>
+                                <td>30</td>
+                                <td>25</td>
+                                <td>2º ano</td>
+                                <td class="actions">
+                                    <button class="action-btn edit">✏️</button>
+                                    <button class="action-btn delete">🗑️</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3C</td>
+                                <td>Pedro Lima</td>
+                                <td>Fernanda Costa</td>
+                                <td>Manhã</td>
+                                <td>30</td>
+                                <td>30</td>
+                                <td>3º ano</td>
+                                <td class="actions">
+                                    <button class="action-btn edit">✏️</button>
+                                    <button class="action-btn delete">🗑️</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4A</td>
+                                <td>Luciana Ferreira</td>
+                                <td>Ricardo Almeida</td>
+                                <td>Tarde</td>
+                                <td>30</td>
+                                <td>27</td>
+                                <td>4º ano</td>
+                                <td class="actions">
+                                    <button class="action-btn edit">✏️</button>
+                                    <button class="action-btn delete">🗑️</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+           
+            <div class="page" id="schedule">
+                <div class="page-header">
+                    <h1 class="page-title">Horário de Aulas</h1>
+                    <p class="page-subtitle">Visualize e organize os horários de cada turma</p>
+                </div>
+
+                <div class="schedule-container">
+                    <div class="schedule-sidebar">
+                        <h3>Selecione uma turma:</h3>
+                        <div class="schedule-options">
+                            <div class="schedule-option active">Turma 1A</div>
+                            <div class="schedule-option">Turma 2B</div>
+                            <div class="schedule-option">Turma 3C</div>
+                            <div class="schedule-option">Turma 4A</div>
+                            <div class="schedule-option">Turma 5B</div>
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <button class="btn primary" style="width: 100%;">Configurar Horários</button>
+                        </div>
+                    </div>
+
+                    <div class="schedule-main">
+                        <h3>Horário da Turma 1A</h3>
+                        <table class="schedule-table">
+                            <thead>
+                                <tr>
+                                    <th>Horário</th>
+                                    <th>Segunda</th>
+                                    <th>Terça</th>
+                                    <th>Quarta</th>
+                                    <th>Quinta</th>
+                                    <th>Sexta</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>07:00 - 08:00</td>
+                                    <td>Matemática</td>
+                                    <td>Português</td>
+                                    <td>História</td>
+                                    <td>Matemática</td>
+                                    <td>Geografia</td>
+                                </tr>
+                                <tr>
+                                    <td>08:00 - 09:00</td>
+                                    <td>Português</td>
+                                    <td>Matemática</td>
+                                    <td>Ciências</td>
+                                    <td>Português</td>
+                                    <td>História</td>
+                                </tr>
+                                <tr>
+                                    <td>09:00 - 09:30</td>
+                                    <td colspan="5" style="text-align: center; background: #f8f9fa;">Intervalo</td>
+                                </tr>
+                                <tr>
+                                    <td>09:30 - 10:30</td>
+                                    <td>Geografia</td>
+                                    <td>Ciências</td>
+                                    <td>Matemática</td>
+                                    <td>Geografia</td>
+                                    <td>Português</td>
+                                </tr>
+                                <tr>
+                                    <td>10:30 - 11:30</td>
+                                    <td>Artes</td>
+                                    <td>Educação Física</td>
+                                    <td>Inglês</td>
+                                    <td>Artes</td>
+                                    <td>Educação Física</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+           
+            <div class="page" id="reports">
+                <div class="page-header">
+                    <h1 class="page-title">Relatórios</h1>
+                    <p class="page-subtitle">Gerencie relatórios e documentos da escola</p>
+                </div>
+
+                <h3 style="margin-bottom: 15px;">Relatórios Acadêmicos</h3>
+                <div class="reports-grid">
+                    <div class="report-card">
+                        <div class="report-icon academic">📊</div>
+                        <h3 class="report-title">Relatório de Notas por Turma</h3>
+                        <p class="report-description">Consolida as médias por turmas e disciplinas</p>
+                        <button class="btn primary">Gerar Relatório</button>
+                    </div>
+                    <div class="report-card">
+                        <div class="report-icon academic">👥</div>
+                        <h3 class="report-title">Relatório de Frequência</h3>
+                        <p class="report-description">Controle de presença dos alunos</p>
+                        <button class="btn primary">Gerar Relatório</button>
+                    </div>
+                    <div class="report-card">
+                        <div class="report-icon academic">📈</div>
+                        <h3 class="report-title">Relatório de Desempenho</h3>
+                        <p class="report-description">Avalia o desempenho acadêmico</p>
+                        <button class="btn primary">Gerar Relatório</button>
+                    </div>
+                </div>
+
+                <h3 style="margin: 30px 0 15px;">Relatórios Administrativos</h3>
+                <div class="reports-grid">
+                    <div class="report-card">
+                        <div class="report-icon admin">📋</div>
+                        <h3 class="report-title">Relatório de Matrículas</h3>
+                        <p class="report-description">Dados sobre matrículas realizadas</p>
+                        <button class="btn primary">Gerar Relatório</button>
+                    </div>
+                    <div class="report-card">
+                        <div class="report-icon admin">🏫</div>
+                        <h3 class="report-title">Relatório de Capacidade</h3>
+                        <p class="report-description">Ocupação das salas de aula</p>
+                        <button class="btn primary">Gerar Relatório</button>
+                    </div>
+                    <div class="report-card">
+                        <div class="report-icon admin">🔄</div>
+                        <h3 class="report-title">Relatório de Transferências</h3>
+                        <p class="report-description">Alunos transferidos no período</p>
+                        <button class="btn primary">Gerar Relatório</button>
+                    </div>
+                </div>
+
+                <h3 style="margin: 30px 0 15px;">Documentos e Termos</h3>
+                <div class="reports-grid">
+                    <div class="report-card">
+                        <div class="report-icon documents">📄</div>
+                        <h3 class="report-title">Declaração de Matrícula</h3>
+                        <p class="report-description">Documento que comprova a matrícula do aluno</p>
+                        <button class="btn primary">Imprimir Modelo</button>
+                    </div>
+                    <div class="report-card">
+                        <div class="report-icon documents">📑</div>
+                        <h3 class="report-title">Termo de Matrícula</h3>
+                        <p class="report-description">Termo oficial de matrícula do aluno</p>
+                        <button class="btn primary">Imprimir Modelo</button>
+                    </div>
+                    <div class="report-card">
+                        <div class="report-icon documents">📝</div>
+                        <h3 class="report-title">Termo de Compromisso</h3>
+                        <p class="report-description">Termo de compromisso e conduta do aluno</p>
+                        <button class="btn primary">Imprimir Modelo</button>
+                    </div>
+                </div>
+            </div>
+
+           
+            <div class="page" id="calendar">
+                <div class="page-header">
+                    <h1 class="page-title">Calendário</h1>
+                    <p class="page-subtitle">Gerencie eventos e datas importantes</p>
+                </div>
+
+                <div class="calendar-container">
+                    <div class="calendar-widget">
+                        <div class="calendar-header">
+                            <button class="nav-btn">←</button>
+                            <div class="month-year">Setembro de 2025</div>
+                            <button class="nav-btn">→</button>
+                        </div>
+                        <div class="calendar-grid">
+                            <div class="calendar-day header">Dom</div>
+                            <div class="calendar-day header">Seg</div>
+                            <div class="calendar-day header">Ter</div>
+                            <div class="calendar-day header">Qua</div>
+                            <div class="calendar-day header">Qui</div>
+                            <div class="calendar-day header">Sex</div>
+                            <div class="calendar-day header">Sáb</div>
+
+                            <!-- Dias do mês anterior -->
+                            <div class="calendar-day other-month">25</div>
+                            <div class="calendar-day other-month">26</div>
+                            <div class="calendar-day other-month">27</div>
+                            <div class="calendar-day other-month">28</div>
+                            <div class="calendar-day other-month">29</div>
+                            <div class="calendar-day other-month">30</div>
+                            <div class="calendar-day">1</div>
+
+                            <!-- Dias do mês atual -->
+                            <div class="calendar-day">2</div>
+                            <div class="calendar-day">3</div>
+                            <div class="calendar-day">4</div>
+                            <div class="calendar-day">5</div>
+                            <div class="calendar-day">6</div>
+                            <div class="calendar-day">7</div>
+                            <div class="calendar-day">8</div>
+                            <div class="calendar-day">9</div>
+                            <div class="calendar-day">10</div>
+                            <div class="calendar-day">11</div>
+                            <div class="calendar-day">12</div>
+                            <div class="calendar-day">13</div>
+                            <div class="calendar-day">14</div>
+                            <div class="calendar-day">15</div>
+                            <div class="calendar-day">16</div>
+                            <div class="calendar-day">17</div>
+                            <div class="calendar-day">18</div>
+                            <div class="calendar-day">19</div>
+                            <div class="calendar-day">20</div>
+                            <div class="calendar-day today">21</div>
+                            <div class="calendar-day">22</div>
+                            <div class="calendar-day">23</div>
+                            <div class="calendar-day">24</div>
+                            <div class="calendar-day">25</div>
+                            <div class="calendar-day">26</div>
+                            <div class="calendar-day">27</div>
+                            <div class="calendar-day">28</div>
+                            <div class="calendar-day">29</div>
+                            <div class="calendar-day">30</div>
+
+                            <!-- Dias do próximo mês -->
+                            <div class="calendar-day other-month">1</div>
+                            <div class="calendar-day other-month">2</div>
+                            <div class="calendar-day other-month">3</div>
+                            <div class="calendar-day other-month">4</div>
+                        </div>
+                    </div>
+
+                    <div class="events-container">
+                        <div class="section-header">
+                            <h3 class="section-title">Eventos: segunda-feira, 22 de setembro de 2025</h3>
+                        </div>
+                        <div style="text-align: center; padding: 40px 0; color: #7f8c8d;">
+                            Não há eventos para esta data.
+                        </div>
+                        <div style="text-align: center; margin-top: 20px;">
+                            <button class="btn primary">Adicionar Evento</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="page" id="users">
+                <div class="page-header">
+                    <h1 class="page-title">Usuários do Sistema</h1>
+                    <p class="page-subtitle">Gerencie os usuários com acesso ao sistema</p>
+                </div>
+
+                <div class="table-header">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Buscar usuários...">
+                    </div>
+                    <div class="table-actions">
+                        <button class="btn primary" id="addUserBtn">+ Adicionar Usuário</button>
+                    </div>
+                </div>
+
+                <div class="users-grid">
+                    <div class="user-card">
+                        <div class="user-header">
+                            <div class="user-avatar">AS</div>
+                            <div class="user-info">
+                                <h3>Ana Silva</h3>
+                                <div class="user-role">Administrador</div>
+                            </div>
+                        </div>
+                        <div class="user-details">
+                            <div class="user-detail">
+                                <span class="label">E-mail:</span>
+                                <span class="value">ana.silva@escola.edu.br</span>
+                            </div>
+                            <div class="user-detail">
+                                <span class="label">Telefone:</span>
+                                <span class="value">(11) 99999-1234</span>
+                            </div>
+                            <div class="user-detail">
+                                <span class="label">Departamento:</span>
+                                <span class="value">Secretaria</span>
+                            </div>
+                            <div class="user-detail">
+                                <span class="label">Último acesso:</span>
+                                <span class="value">Hoje, 09:45</span>
+                            </div>
+                        </div>
+                        <div class="user-actions">
+                            <button class="btn">Editar</button>
+                            <span class="status-badge active">Ativo</span>
+                        </div>
+                    </div>
+
+                    <div class="user-card">
+                        <div class="user-header">
+                            <div class="user-avatar">JS</div>
+                            <div class="user-info">
+                                <h3>João Santos</h3>
+                                <div class="user-role">Coordenador</div>
+                            </div>
+                        </div>
+                        <div class="user-details">
+                            <div class="user-detail">
+                                <span class="label">E-mail:</span>
+                                <span class="value">joao.santos@escola.edu.br</span>
+                            </div>
+                            <div class="user-detail">
+                                <span class="label">Telefone:</span>
+                                <span class="value">(11) 98888-5678</span>
+                            </div>
+                            <div class="user-detail">
+                                <span class="label">Departamento:</span>
+                                <span class="value">Coordenação</span>
+                            </div>
+                            <div class="user-detail">
+                                <span class="label">Último acesso:</span>
+                                <span class="value">Ontem, 14:20</span>
+                            </div>
+                        </div>
+                        <div class="user-actions">
+                            <button class="btn">Editar</button>
+                            <span class="status-badge active">Ativo</span>
+                        </div>
+                    </div>
+
+                    <div class="user-card">
+                        <div class="user-header">
+                            <div class="user-avatar">MC</div>
+                            <div class="user-info">
+                                <h3>Maria Costa</h3>
+                                <div class="user-role">Secretária</div>
+                            </div>
+                        </div>
+                        <div class="user-details">
+                            <div class="user-detail">
+                                <span class="label">E-mail:</span>
+                                <span class="value">maria.costa@escola.edu.br</span>
+                            </div>
+                            <div class="user-detail">
+                                <span class="label">Telefone:</span>
+                                <span class="value">(11) 97777-9012</span>
+                            </div>
+                            <div class="user-detail">
+                                <span class="label">Departamento:</span>
+                                <span class="value">Secretaria</span>
+                            </div>
+                            <div class="user-detail">
+                                <span class="label">Último acesso:</span>
+                                <span class="value">Hoje, 08:30</span>
+                            </div>
+                        </div>
+                        <div class="user-actions">
+                            <button class="btn">Editar</button>
+                            <span class="status-badge active">Ativo</span>
+                        </div>
+                    </div>
+
+                    <div class="user-card">
+                        <div class="user-header">
+                            <div class="user-avatar">PL</div>
+                            <div class="user-info">
+                                <h3>Pedro Lima</h3>
+                                <div class="user-role">Professor</div>
+                            </div>
+                        </div>
+                        <div class="user-details">
+                            <div class="user-detail">
+                                <span class="label">E-mail:</span>
+                                <span class="value">pedro.lima@escola.edu.br</span>
+                            </div>
+                            <div class="user-detail">
+                                <span class="label">Telefone:</span>
+                                <span class="value">(11) 96666-3456</span>
+                            </div>
+                            <div class="user-detail">
+                                <span class="label">Departamento:</span>
+                                <span class="value">Corpo Docente</span>
+                            </div>
+                            <div class="user-detail">
+                                <span class="label">Último acesso:</span>
+                                <span class="value">2 dias atrás</span>
+                            </div>
+                        </div>
+                        <div class="user-actions">
+                            <button class="btn">Editar</button>
+                            <span class="status-badge inactive">Inativo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="page" id="settings">
+                <div class="page-header">
+                    <h1 class="page-title">Configurações</h1>
+                    <p class="page-subtitle">Gerencie as configurações do sistema</p>
+                </div>
+
+                <div class="settings-grid">
+                    <div class="setting-section">
+                        <h3 style="margin-bottom: 20px;">Informações da Escola</h3>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <h4>Nome da Escola</h4>
+                                <p>Escola Municipal Dom Paulo mc Hugh</p>
+                            </div>
+                            <button class="btn">Editar</button>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <h4>Endereço</h4>
+                                <p>Av. Mario Andreazza, 958 Sao Jorge. 69104-050 Itacoatiara - AM</p>
+                            </div>
+                            <button class="btn">Editar</button>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <h4>Telefone</h4>
+                                <p>(92) 99424-7350</p>
+                            </div>
+                            <button class="btn">Editar</button>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <h4>E-mail</h4>
+                                <p>contato@escoladompaulo.edu.br</p>
+                            </div>
+                            <button class="btn">Editar</button>
+                        </div>
+                    </div>
+
+                    <div class="setting-section">
+                        <h3 style="margin-bottom: 20px;">Instalações da Escola</h3>
+                        <div class="facilities-grid">
+                            <div class="facility-item">
+                                <div class="facility-count">12</div>
+                                <div class="facility-label">Salas de Aula</div>
+                            </div>
+                            <div class="facility-item">
+                                <div class="facility-count">1</div>
+                                <div class="facility-label">Cantina</div>
+                            </div>
+                            <div class="facility-item">
+                                <div class="facility-count">3</div>
+                                <div class="facility-label">Laboratórios</div>
+                            </div>
+                            <div class="facility-item">
+                                <div class="facility-count">1</div>
+                                <div class="facility-label">Biblioteca</div>
+                            </div>
+                            <div class="facility-item">
+                                <div class="facility-count">6</div>
+                                <div class="facility-label">Banheiros</div>
+                            </div>
+                            <div class="facility-item">
+                                <div class="facility-count">2</div>
+                                <div class="facility-label">Quadras</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="setting-section">
+                        <h3 style="margin-bottom: 20px;">Preferências do Sistema</h3>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <h4>Notificações por E-mail</h4>
+                                <p>Receba alertas importantes por e-mail</p>
+                            </div>
+                            <div class="toggle-switch active"></div>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <h4>Modo de Manutenção</h4>
+                                <p>Desative o acesso de usuários durante manutenções</p>
+                            </div>
+                            <div class="toggle-switch"></div>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <h4>Backup Automático</h4>
+                                <p>Realize backups automáticos diariamente</p>
+                            </div>
+                            <div class="toggle-switch active"></div>
+                        </div>
+                    </div>
+
+                    <div class="setting-section">
+                        <h3 style="margin-bottom: 20px;">Informações da Conta</h3>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <h4>Nome do Usuário</h4>
+                                <p>Administrador</p>
+                            </div>
+                            <button class="btn">Editar Perfil</button>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <h4>E-mail</h4>
+                                <p>contato@escoladompaulo.edu.br</p>
+                            </div>
+                            <button class="btn">Alterar E-mail</button>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <h4>Senha</h4>
+                                <p>Última alteração: 15/03/2023</p>
+                            </div>
+                            <button class="btn">Alterar Senha</button>
+                        </div>
+                    </div>
+
+                    <div class="setting-section">
+                        <h3 style="margin-bottom: 20px;">Versão do Sistema</h3>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <h4>Versão Atual</h4>
+                                <p>v2.1.5</p>
+                            </div>
+                            <div>Última atualização: 10/05/2023</div>
+                        </div>
+                        <div style="text-align: center; margin-top: 20px;">
+                            <button class="btn primary">Verificar Atualizações</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    
+    <div class="modal" id="addUserModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Adicionar Novo Usuário</h3>
+                <button class="modal-close" id="closeUserModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="addUserForm">
+                    <div class="form-group">
+                        <label for="userName" class="form-label">Nome Completo *</label>
+                        <input type="text" id="userName" class="form-input" placeholder="Nome do usuário" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="userEmail" class="form-label">E-mail *</label>
+                        <input type="email" id="userEmail" class="form-input" placeholder="email@escola.edu.br" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="userRole" class="form-label">Perfil de Acesso *</label>
+                        <select id="userRole" class="form-input" required>
+                            <option value="">Selecione um perfil</option>
+                            <option value="admin">Administrador</option>
+                            <option value="coordinator">Coordenador</option>
+                            <option value="secretary">Secretário</option>
+                            <option value="teacher">Professor</option>
+                            <option value="assistant">Assistente</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="userDepartment" class="form-label">Departamento</label>
+                        <input type="text" id="userDepartment" class="form-input" placeholder="Departamento do usuário">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="userPhone" class="form-label">Telefone</label>
+                        <input type="tel" id="userPhone" class="form-input" placeholder="(11) 99999-9999">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Status</label>
+                        <div style="display: flex; gap: 15px;">
+                            <label style="display: flex; align-items: center;">
+                                <input type="radio" name="userStatus" value="active" checked> Ativo
+                            </label>
+                            <label style="display: flex; align-items: center;">
+                                <input type="radio" name="userStatus" value="inactive"> Inativo
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" id="cancelUserBtn">Cancelar</button>
+                <button class="btn primary" id="saveUserBtn">Salvar Usuário</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
