@@ -3,31 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escola Dom Paulo - Sistema de Gestão</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>EducaFácil - Gestão Escolar Inteligente</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css"
 </head>
 <body>
     
     <div class="loading-overlay" id="loadingOverlay">
         <div class="loading-spinner"></div>
+        <div class="loading-content">
+            <div class="loading-text">Carregando...</div>
+            <div class="loading-subtext">Aguarde enquanto preparamos tudo para você</div>
+            <div class="loading-dots">
+                <div class="loading-dot"></div>
+                <div class="loading-dot"></div>
+                <div class="loading-dot"></div>
+            </div>
+        </div>
     </div>
 
-    
+
     <div class="auth-page" id="authPage">
         <div class="auth-container">
             <div class="auth-form-container" id="authFormContainer">
                 <!-- Login -->
                 <div class="auth-form active" id="loginFormContainer">
                     <div class="auth-left">
-                        <div class="auth-logo">Escola Dom Paulo</div>
-                        <h1 class="auth-title">Sistema de Gestão Escolar</h1>
+                        <div class="auth-logo">EducaFácil</div>
+                        <h1 class="auth-title">Gestão Escolar Inteligente</h1>
                         <p class="auth-subtitle">Acesso exclusivo para administradores e equipe gestora</p>
                         <ul class="auth-features">
                             <li>Gerencie alunos, turmas e professores</li>
                             <li>Controle de frequência e notas</li>
                             <li>Relatórios e documentos automatizados</li>
                             <li>Calendário escolar integrado</li>
-                            <li>Comunicação com pais e responsáveis</li>
                         </ul>
                     </div>
                     
@@ -49,7 +58,7 @@
                                     <label for="password" class="form-label">Senha</label>
                                     <div class="password-toggle">
                                         <input type="password" id="password" class="form-input" placeholder="Sua senha" required>
-                                        <button type="button" class="toggle-password" id="togglePassword">👁️</button>
+                                        <button type="button" class="toggle-password" id="togglePassword"><i class="fas fa-eye"></i></button>
                                     </div>
                                 </div>
                                 
@@ -82,7 +91,7 @@
                 <!-- Registro -->
                 <div class="auth-form" id="registerFormContainer">
                     <div class="auth-left">
-                        <div class="auth-logo">Escola Dom Paulo</div>
+                        <div class="auth-logo">EducaFácil</div>
                         <h1 class="auth-title">Solicitar Acesso</h1>
                         <p class="auth-subtitle">Preencha o formulário para solicitar acesso ao sistema</p>
                         <ul class="auth-features">
@@ -155,10 +164,10 @@
                     </div>
                 </div>
 
-                <!-- Recuperacao -->
+                
                 <div class="auth-form" id="recoveryFormContainer">
                     <div class="auth-left">
-                        <div class="auth-logo">Escola Dom Paulo</div>
+                        <div class="auth-logo">EducaFácil</div>
                         <h1 class="auth-title">Recuperar Senha</h1>
                         <p class="auth-subtitle">Siga os passos para redefinir sua senha de acesso</p>
                         <ul class="auth-features">
@@ -182,7 +191,6 @@
                                 Código enviado com sucesso! Verifique seu e-mail.
                             </div>
                             
-                            
                             <div class="recovery-steps">
                                 <div class="step active" id="step1">
                                     <div class="step-number">1</div>
@@ -198,7 +206,6 @@
                                 </div>
                             </div>
                             
-                            
                             <form class="recovery-form active" id="recoveryStep1">
                                 <div class="form-group">
                                     <label for="recoveryEmail" class="form-label">E-mail cadastrado</label>
@@ -211,7 +218,6 @@
                                     Lembrou sua senha? <a id="backToLoginFromRecovery">Fazer login</a>
                                 </div>
                             </form>
-                            
                             
                             <form class="recovery-form" id="recoveryStep2">
                                 <div class="form-group">
@@ -237,13 +243,12 @@
                                 </div>
                             </form>
                             
-                           
                             <form class="recovery-form" id="recoveryStep3">
                                 <div class="form-group">
                                     <label for="newPassword" class="form-label">Nova Senha</label>
                                     <div class="password-toggle">
                                         <input type="password" id="newPassword" class="form-input" placeholder="Digite sua nova senha" required>
-                                        <button type="button" class="toggle-password" id="toggleNewPassword">👁️</button>
+                                        <button type="button" class="toggle-password" id="toggleNewPassword"><i class="fas fa-eye"></i></button>
                                     </div>
                                 </div>
                                 
@@ -251,7 +256,7 @@
                                     <label for="confirmPassword" class="form-label">Confirmar Nova Senha</label>
                                     <div class="password-toggle">
                                         <input type="password" id="confirmPassword" class="form-input" placeholder="Confirme sua nova senha" required>
-                                        <button type="button" class="toggle-password" id="toggleConfirmPassword">👁️</button>
+                                        <button type="button" class="toggle-password" id="toggleConfirmPassword"><i class="fas fa-eye"></i></button>
                                     </div>
                                 </div>
                                 
@@ -268,17 +273,18 @@
         </div>
     </div>
 
-   
+    
     <div class="app-container" id="appContainer">
-        
+        <!-- Header -->
         <header class="header">
-            <div class="logo">Escola Dom Paulo</div>
+            <div class="logo">EducaFácil</div>
             <div class="search-bar">
                 <input type="text" placeholder="Pesquisar...">
             </div>
             <div class="user-info">
-                <div class="notification-bell">🔔</div>
+                <div class="notification-bell"><i class="fas fa-bell"></i></div>
                 <span class="user-name">Admin</span>
+                <div class="user-avatar">AD</div>
                 <button class="btn" id="logoutBtn">Sair</button>
             </div>
         </header>
@@ -286,15 +292,18 @@
         
         <nav class="sidebar">
             <ul class="sidebar-menu">
-                <li><a href="#" class="active" data-page="dashboard">Painel</a></li>
-                <li><a href="#" data-page="students">Alunos</a></li>
-                <li><a href="#" data-page="staff">Equipe Gestora</a></li>
-                <li><a href="#" data-page="classes">Turmas</a></li>
-                <li><a href="#" data-page="schedule">Horário</a></li>
-                <li><a href="#" data-page="reports">Relatórios</a></li>
-                <li><a href="#" data-page="calendar">Calendário</a></li>
-                <li><a href="#" data-page="users">Usuários</a></li>
-                <li><a href="#" data-page="settings">Configurações</a></li>
+                <li><a href="#" class="active" data-page="dashboard"><i class="fas fa-tachometer-alt"></i> Painel</a></li>
+                <li><a href="#" data-page="students"><i class="fas fa-user-graduate"></i> Alunos</a></li>
+                <li><a href="#" data-page="student-details"><i class="fas fa-eye"></i> Detalhes do Aluno</a></li>
+                <li><a href="#" data-page="staff"><i class="fas fa-users"></i> Equipe Gestora</a></li>
+                <li><a href="#" data-page="classes"><i class="fas fa-chalkboard-teacher"></i> Turmas</a></li>
+                <li><a href="#" data-page="schedule"><i class="fas fa-clock"></i> Horário</a></li>
+                <li><a href="#" data-page="reports"><i class="fas fa-chart-bar"></i> Relatórios</a></li>
+                <li><a href="#" data-page="calendar"><i class="fas fa-calendar-alt"></i> Calendário</a></li>
+                <li><a href="#" data-page="digital-diary"><i class="fas fa-book"></i> Diário Digital</a></li>
+                <li><a href="#" data-page="diary"><i class="fas fa-sticky-note"></i> Anotações Pessoais</a></li>
+                <li><a href="#" data-page="users"><i class="fas fa-user-cog"></i> Usuários</a></li>
+                <li><a href="#" data-page="settings"><i class="fas fa-cog"></i> Configurações</a></li>
             </ul>
         </nav>
 
@@ -307,10 +316,10 @@
                     <p class="page-subtitle">Bem vindo à secretaria digital</p>
                 </div>
 
-                
+                <!-- Métricas -->
                 <div class="metrics-grid">
                     <div class="metric-card">
-                        <div class="metric-icon blue">👥</div>
+                        <div class="metric-icon blue"><i class="fas fa-user-graduate"></i></div>
                         <div class="metric-content">
                             <h3>1,234</h3>
                             <p>Total de Alunos</p>
@@ -318,7 +327,7 @@
                         </div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-icon green">🏫</div>
+                        <div class="metric-icon green"><i class="fas fa-chalkboard-teacher"></i></div>
                         <div class="metric-content">
                             <h3>48</h3>
                             <p>Total de Turmas</p>
@@ -326,7 +335,7 @@
                         </div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-icon purple">📅</div>
+                        <div class="metric-icon purple"><i class="fas fa-calendar-alt"></i></div>
                         <div class="metric-content">
                             <h3>12</h3>
                             <p>Eventos</p>
@@ -334,7 +343,7 @@
                         </div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-icon orange">📊</div>
+                        <div class="metric-icon orange"><i class="fas fa-chart-line"></i></div>
                         <div class="metric-content">
                             <h3>8.6</h3>
                             <p>Média de Notas</p>
@@ -394,28 +403,28 @@
                             <h3 class="section-title">Próximos Eventos</h3>
                         </div>
                         <div class="event-item">
-                            <div class="event-icon meeting">👥</div>
+                            <div class="event-icon meeting"><i class="fas fa-users"></i></div>
                             <div class="event-details">
                                 <h4>Reunião de pais e mestres</h4>
                                 <div class="event-date">20 de junho de 2023</div>
                             </div>
                         </div>
                         <div class="event-item">
-                            <div class="event-icon grades">📊</div>
+                            <div class="event-icon grades"><i class="fas fa-chart-bar"></i></div>
                             <div class="event-details">
                                 <h4>Fechamento de notas bimestrais</h4>
                                 <div class="event-date">08 de julho de 2023</div>
                             </div>
                         </div>
                         <div class="event-item">
-                            <div class="event-icon party">🎉</div>
+                            <div class="event-icon party"><i class="fas fa-music"></i></div>
                             <div class="event-details">
                                 <h4>Festa junina escolar</h4>
                                 <div class="event-date">10 de julho de 2023</div>
                             </div>
                         </div>
                         <div class="event-item">
-                            <div class="event-icon holiday">🏖️</div>
+                            <div class="event-icon holiday"><i class="fas fa-umbrella-beach"></i></div>
                             <div class="event-details">
                                 <h4>Início das férias escolares</h4>
                                 <div class="event-date">28 de julho de 2023</div>
@@ -431,28 +440,28 @@
                         <a href="#" class="btn">Ver todas</a>
                     </div>
                     <div class="activity-item">
-                        <div class="activity-icon presence">👥</div>
+                        <div class="activity-icon presence"><i class="fas fa-user-check"></i></div>
                         <div class="activity-content">
                             <p>Ana registrou presença para a turma 9B</p>
                             <div class="activity-time">2 horas atrás</div>
                         </div>
                     </div>
                     <div class="activity-item">
-                        <div class="activity-icon grades">📝</div>
+                        <div class="activity-icon grades"><i class="fas fa-edit"></i></div>
                         <div class="activity-content">
                             <p>João registrou notas para Matemática do 7A</p>
                             <div class="activity-time">3 horas atrás</div>
                         </div>
                     </div>
                     <div class="activity-item">
-                        <div class="activity-icon event">📅</div>
+                        <div class="activity-icon event"><i class="fas fa-calendar-plus"></i></div>
                         <div class="activity-content">
                             <p>Pedro adicionou um novo evento no calendário</p>
                             <div class="activity-time">5 horas atrás</div>
                         </div>
                     </div>
                     <div class="activity-item">
-                        <div class="activity-icon edit">✏️</div>
+                        <div class="activity-icon edit"><i class="fas fa-user-edit"></i></div>
                         <div class="activity-content">
                             <p>Juliana editou informações do aluno Carlos Mendes</p>
                             <div class="activity-time">6 horas atrás</div>
@@ -474,7 +483,7 @@
                             <input type="text" placeholder="Buscar alunos...">
                         </div>
                         <div class="table-actions">
-                            <button class="btn primary" id="addStudentBtn">+ Adicionar Aluno</button>
+                            <button class="btn primary" id="addStudentBtn"><i class="fas fa-plus"></i> Adicionar Aluno</button>
                         </div>
                     </div>
                     <table>
@@ -488,64 +497,22 @@
                                 <th>Ações</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>Ana Silva</td>
-                                <td>9º ano</td>
-                                <td>9B</td>
-                                <td><span class="status-badge active">Ativo</span></td>
-                                <td>26/04/2023</td>
-                                <td class="actions">
-                                    <button class="action-btn edit">✏️</button>
-                                    <button class="action-btn delete">🗑️</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Carlos Oliveira</td>
-                                <td>7º ano</td>
-                                <td>7A</td>
-                                <td><span class="status-badge active">Ativo</span></td>
-                                <td>26/04/2023</td>
-                                <td class="actions">
-                                    <button class="action-btn edit">✏️</button>
-                                    <button class="action-btn delete">🗑️</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Juliana Santos</td>
-                                <td>10º ano</td>
-                                <td>10C</td>
-                                <td><span class="status-badge active">Ativo</span></td>
-                                <td>27/06/2023</td>
-                                <td class="actions">
-                                    <button class="action-btn edit">✏️</button>
-                                    <button class="action-btn delete">🗑️</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Pedro Almeida</td>
-                                <td>8º ano</td>
-                                <td>8B</td>
-                                <td><span class="status-badge active">Ativo</span></td>
-                                <td>26/04/2023</td>
-                                <td class="actions">
-                                    <button class="action-btn edit">✏️</button>
-                                    <button class="action-btn delete">🗑️</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Mariana Costa</td>
-                                <td>11º ano</td>
-                                <td>11A</td>
-                                <td><span class="status-badge active">Ativo</span></td>
-                                <td>26/04/2023</td>
-                                <td class="actions">
-                                    <button class="action-btn edit">✏️</button>
-                                    <button class="action-btn delete">🗑️</button>
-                                </td>
-                            </tr>
+                        <tbody id="studentsTableBody">
+                            
                         </tbody>
                     </table>
+                </div>
+            </div>
+
+            
+            <div class="page" id="student-details">
+                <div class="page-header">
+                    <h1 class="page-title">Detalhes do Aluno</h1>
+                    <p class="page-subtitle">Visualize informações detalhadas, notas e frequência do aluno</p>
+                </div>
+
+                <div class="student-details-container" id="studentDetailsContainer">
+                
                 </div>
             </div>
 
@@ -562,7 +529,7 @@
                             <input type="text" placeholder="Buscar membros...">
                         </div>
                         <div class="table-actions">
-                            <button class="btn primary" id="addStaffBtn">+ Adicionar Membro</button>
+                            <button class="btn primary" id="addStaffBtn"><i class="fas fa-plus"></i> Adicionar Membro</button>
                         </div>
                     </div>
                     <table>
@@ -586,8 +553,8 @@
                                 <td>(11) 99999-1234</td>
                                 <td><span class="status-badge active">Ativo</span></td>
                                 <td class="actions">
-                                    <button class="action-btn edit">✏️</button>
-                                    <button class="action-btn delete">🗑️</button>
+                                    <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                    <button class="action-btn delete"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
                             <tr>
@@ -598,8 +565,8 @@
                                 <td>(11) 98888-5678</td>
                                 <td><span class="status-badge active">Ativo</span></td>
                                 <td class="actions">
-                                    <button class="action-btn edit">✏️</button>
-                                    <button class="action-btn delete">🗑️</button>
+                                    <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                    <button class="action-btn delete"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
                             <tr>
@@ -610,8 +577,8 @@
                                 <td>(11) 97777-9012</td>
                                 <td><span class="status-badge active">Ativo</span></td>
                                 <td class="actions">
-                                    <button class="action-btn edit">✏️</button>
-                                    <button class="action-btn delete">🗑️</button>
+                                    <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                    <button class="action-btn delete"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
                         </tbody>
@@ -642,7 +609,7 @@
                             </div>
                         </div>
                         <div class="table-actions">
-                            <button class="btn primary" id="addClassBtn">+ Adicionar Turma</button>
+                            <button class="btn primary" id="addClassBtn"><i class="fas fa-plus"></i> Adicionar Turma</button>
                         </div>
                     </div>
                     <table>
@@ -668,8 +635,8 @@
                                 <td>28</td>
                                 <td>1º ano</td>
                                 <td class="actions">
-                                    <button class="action-btn edit">✏️</button>
-                                    <button class="action-btn delete">🗑️</button>
+                                    <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                    <button class="action-btn delete"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
                             <tr>
@@ -681,8 +648,8 @@
                                 <td>25</td>
                                 <td>2º ano</td>
                                 <td class="actions">
-                                    <button class="action-btn edit">✏️</button>
-                                    <button class="action-btn delete">🗑️</button>
+                                    <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                    <button class="action-btn delete"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
                             <tr>
@@ -694,8 +661,8 @@
                                 <td>30</td>
                                 <td>3º ano</td>
                                 <td class="actions">
-                                    <button class="action-btn edit">✏️</button>
-                                    <button class="action-btn delete">🗑️</button>
+                                    <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                    <button class="action-btn delete"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
                             <tr>
@@ -707,8 +674,8 @@
                                 <td>27</td>
                                 <td>4º ano</td>
                                 <td class="actions">
-                                    <button class="action-btn edit">✏️</button>
-                                    <button class="action-btn delete">🗑️</button>
+                                    <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                    <button class="action-btn delete"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
                         </tbody>
@@ -716,7 +683,7 @@
                 </div>
             </div>
 
-           
+            
             <div class="page" id="schedule">
                 <div class="page-header">
                     <h1 class="page-title">Horário de Aulas</h1>
@@ -794,81 +761,89 @@
                 </div>
             </div>
 
-           
+            
             <div class="page" id="reports">
                 <div class="page-header">
                     <h1 class="page-title">Relatórios</h1>
                     <p class="page-subtitle">Gerencie relatórios e documentos da escola</p>
                 </div>
 
-                <h3 style="margin-bottom: 15px;">Relatórios Acadêmicos</h3>
-                <div class="reports-grid">
-                    <div class="report-card">
-                        <div class="report-icon academic">📊</div>
-                        <h3 class="report-title">Relatório de Notas por Turma</h3>
-                        <p class="report-description">Consolida as médias por turmas e disciplinas</p>
-                        <button class="btn primary">Gerar Relatório</button>
+                <div class="reports-container">
+                    <div class="reports-section">
+                        <h3 class="reports-section-title">Relatórios Acadêmicos</h3>
+                        <div class="reports-grid">
+                            <div class="report-card">
+                                <div class="report-icon academic"><i class="fas fa-chart-bar"></i></div>
+                                <h3 class="report-title">Relatório de Notas por Turma</h3>
+                                <p class="report-description">Consolida as médias por turmas e disciplinas</p>
+                                <button class="btn primary">Gerar Relatório</button>
+                            </div>
+                            <div class="report-card">
+                                <div class="report-icon academic"><i class="fas fa-user-check"></i></div>
+                                <h3 class="report-title">Relatório de Frequência</h3>
+                                <p class="report-description">Controle de presença dos alunos</p>
+                                <button class="btn primary">Gerar Relatório</button>
+                            </div>
+                            <div class="report-card">
+                                <div class="report-icon academic"><i class="fas fa-chart-line"></i></div>
+                                <h3 class="report-title">Relatório de Desempenho</h3>
+                                <p class="report-description">Avalia o desempenho acadêmico</p>
+                                <button class="btn primary">Gerar Relatório</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="report-card">
-                        <div class="report-icon academic">👥</div>
-                        <h3 class="report-title">Relatório de Frequência</h3>
-                        <p class="report-description">Controle de presença dos alunos</p>
-                        <button class="btn primary">Gerar Relatório</button>
-                    </div>
-                    <div class="report-card">
-                        <div class="report-icon academic">📈</div>
-                        <h3 class="report-title">Relatório de Desempenho</h3>
-                        <p class="report-description">Avalia o desempenho acadêmico</p>
-                        <button class="btn primary">Gerar Relatório</button>
-                    </div>
-                </div>
 
-                <h3 style="margin: 30px 0 15px;">Relatórios Administrativos</h3>
-                <div class="reports-grid">
-                    <div class="report-card">
-                        <div class="report-icon admin">📋</div>
-                        <h3 class="report-title">Relatório de Matrículas</h3>
-                        <p class="report-description">Dados sobre matrículas realizadas</p>
-                        <button class="btn primary">Gerar Relatório</button>
+                    <div class="reports-section">
+                        <h3 class="reports-section-title">Relatórios Administrativos</h3>
+                        <div class="reports-grid">
+                            <div class="report-card">
+                                <div class="report-icon admin"><i class="fas fa-clipboard-list"></i></div>
+                                <h3 class="report-title">Relatório de Matrículas</h3>
+                                <p class="report-description">Dados sobre matrículas realizadas</p>
+                                <button class="btn primary">Gerar Relatório</button>
+                            </div>
+                            <div class="report-card">
+                                <div class="report-icon admin"><i class="fas fa-school"></i></div>
+                                <h3 class="report-title">Relatório de Capacidade</h3>
+                                <p class="report-description">Ocupação das salas de aula</p>
+                                <button class="btn primary">Gerar Relatório</button>
+                            </div>
+                            <div class="report-card">
+                                <div class="report-icon admin"><i class="fas fa-exchange-alt"></i></div>
+                                <h3 class="report-title">Relatório de Transferências</h3>
+                                <p class="report-description">Alunos transferidos no período</p>
+                                <button class="btn primary">Gerar Relatório</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="report-card">
-                        <div class="report-icon admin">🏫</div>
-                        <h3 class="report-title">Relatório de Capacidade</h3>
-                        <p class="report-description">Ocupação das salas de aula</p>
-                        <button class="btn primary">Gerar Relatório</button>
-                    </div>
-                    <div class="report-card">
-                        <div class="report-icon admin">🔄</div>
-                        <h3 class="report-title">Relatório de Transferências</h3>
-                        <p class="report-description">Alunos transferidos no período</p>
-                        <button class="btn primary">Gerar Relatório</button>
-                    </div>
-                </div>
 
-                <h3 style="margin: 30px 0 15px;">Documentos e Termos</h3>
-                <div class="reports-grid">
-                    <div class="report-card">
-                        <div class="report-icon documents">📄</div>
-                        <h3 class="report-title">Declaração de Matrícula</h3>
-                        <p class="report-description">Documento que comprova a matrícula do aluno</p>
-                        <button class="btn primary">Imprimir Modelo</button>
-                    </div>
-                    <div class="report-card">
-                        <div class="report-icon documents">📑</div>
-                        <h3 class="report-title">Termo de Matrícula</h3>
-                        <p class="report-description">Termo oficial de matrícula do aluno</p>
-                        <button class="btn primary">Imprimir Modelo</button>
-                    </div>
-                    <div class="report-card">
-                        <div class="report-icon documents">📝</div>
-                        <h3 class="report-title">Termo de Compromisso</h3>
-                        <p class="report-description">Termo de compromisso e conduta do aluno</p>
-                        <button class="btn primary">Imprimir Modelo</button>
+                    <div class="reports-section">
+                        <h3 class="reports-section-title">Documentos e Termos</h3>
+                        <div class="reports-grid">
+                            <div class="report-card">
+                                <div class="report-icon documents"><i class="fas fa-file-alt"></i></div>
+                                <h3 class="report-title">Declaração de Matrícula</h3>
+                                <p class="report-description">Documento que comprova a matrícula do aluno</p>
+                                <button class="btn primary">Imprimir Modelo</button>
+                            </div>
+                            <div class="report-card">
+                                <div class="report-icon documents"><i class="fas fa-file-contract"></i></div>
+                                <h3 class="report-title">Termo de Matrícula</h3>
+                                <p class="report-description">Termo oficial de matrícula do aluno</p>
+                                <button class="btn primary">Imprimir Modelo</button>
+                            </div>
+                            <div class="report-card">
+                                <div class="report-icon documents"><i class="fas fa-file-signature"></i></div>
+                                <h3 class="report-title">Termo de Compromisso</h3>
+                                <p class="report-description">Termo de compromisso e conduta do aluno</p>
+                                <button class="btn primary">Imprimir Modelo</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-           
+            
             <div class="page" id="calendar">
                 <div class="page-header">
                     <h1 class="page-title">Calendário</h1>
@@ -878,76 +853,124 @@
                 <div class="calendar-container">
                     <div class="calendar-widget">
                         <div class="calendar-header">
-                            <button class="nav-btn">←</button>
-                            <div class="month-year">Setembro de 2025</div>
-                            <button class="nav-btn">→</button>
+                            <button class="nav-btn" id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+                            <div class="month-year" id="currentMonthYear">Setembro de 2025</div>
+                            <button class="nav-btn" id="nextMonth"><i class="fas fa-chevron-right"></i></button>
                         </div>
-                        <div class="calendar-grid">
-                            <div class="calendar-day header">Dom</div>
-                            <div class="calendar-day header">Seg</div>
-                            <div class="calendar-day header">Ter</div>
-                            <div class="calendar-day header">Qua</div>
-                            <div class="calendar-day header">Qui</div>
-                            <div class="calendar-day header">Sex</div>
-                            <div class="calendar-day header">Sáb</div>
-
-                            <!-- Dias do mês anterior -->
-                            <div class="calendar-day other-month">25</div>
-                            <div class="calendar-day other-month">26</div>
-                            <div class="calendar-day other-month">27</div>
-                            <div class="calendar-day other-month">28</div>
-                            <div class="calendar-day other-month">29</div>
-                            <div class="calendar-day other-month">30</div>
-                            <div class="calendar-day">1</div>
-
-                            <!-- Dias do mês atual -->
-                            <div class="calendar-day">2</div>
-                            <div class="calendar-day">3</div>
-                            <div class="calendar-day">4</div>
-                            <div class="calendar-day">5</div>
-                            <div class="calendar-day">6</div>
-                            <div class="calendar-day">7</div>
-                            <div class="calendar-day">8</div>
-                            <div class="calendar-day">9</div>
-                            <div class="calendar-day">10</div>
-                            <div class="calendar-day">11</div>
-                            <div class="calendar-day">12</div>
-                            <div class="calendar-day">13</div>
-                            <div class="calendar-day">14</div>
-                            <div class="calendar-day">15</div>
-                            <div class="calendar-day">16</div>
-                            <div class="calendar-day">17</div>
-                            <div class="calendar-day">18</div>
-                            <div class="calendar-day">19</div>
-                            <div class="calendar-day">20</div>
-                            <div class="calendar-day today">21</div>
-                            <div class="calendar-day">22</div>
-                            <div class="calendar-day">23</div>
-                            <div class="calendar-day">24</div>
-                            <div class="calendar-day">25</div>
-                            <div class="calendar-day">26</div>
-                            <div class="calendar-day">27</div>
-                            <div class="calendar-day">28</div>
-                            <div class="calendar-day">29</div>
-                            <div class="calendar-day">30</div>
-
-                            <!-- Dias do próximo mês -->
-                            <div class="calendar-day other-month">1</div>
-                            <div class="calendar-day other-month">2</div>
-                            <div class="calendar-day other-month">3</div>
-                            <div class="calendar-day other-month">4</div>
+                        <div class="calendar-grid" id="calendarGrid">
+                            
                         </div>
                     </div>
 
-                    <div class="events-container">
+                    <div class="calendar-events">
                         <div class="section-header">
-                            <h3 class="section-title">Eventos: segunda-feira, 22 de setembro de 2025</h3>
+                            <h3 class="section-title" id="eventsDateTitle">Eventos: segunda-feira, 22 de setembro de 2025</h3>
                         </div>
-                        <div style="text-align: center; padding: 40px 0; color: #7f8c8d;">
-                            Não há eventos para esta data.
+                        <div class="events-list" id="eventsList">
+                            
                         </div>
                         <div style="text-align: center; margin-top: 20px;">
-                            <button class="btn primary">Adicionar Evento</button>
+                            <button class="btn primary" id="addEventBtn">Adicionar Evento</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="page" id="digital-diary">
+                <div class="page-header">
+                    <h1 class="page-title">Diário Digital</h1>
+                    <p class="page-subtitle">Gestão pedagógica completa</p>
+                </div>
+
+                <div class="diario-digital-container">
+                    <div class="diario-section">
+                        <h3>Seleção de Professor e Turma</h3>
+                        <div class="selecao-grid">
+                            <div class="selecao-item">
+                                <h4>Professor</h4>
+                                <p>Selecione um professor</p>
+                                <select>
+                                    <option>Selecione um professor</option>
+                                    <option>Ana Maria Silva</option>
+                                    <option>João Santos</option>
+                                    <option>Maria Costa</option>
+                                    <option>Pedro Lima</option>
+                                </select>
+                            </div>
+                            <div class="selecao-item">
+                                <h4>Turma</h4>
+                                <p>Selecione uma turma</p>
+                                <select>
+                                    <option>Selecione uma turma</option>
+                                    <option>Turma 1A</option>
+                                    <option>Turma 2B</option>
+                                    <option>Turma 3C</option>
+                                    <option>Turma 4A</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="diario-section">
+                        <h3>Funcionalidades do Diário</h3>
+                        <div class="funcionalidade-grid">
+                            <div class="funcionalidade-card">
+                                <div class="funcionalidade-icon"><i class="fas fa-user-check"></i></div>
+                                <h4>Frequência</h4>
+                                <p>Lançar frequência dos alunos</p>
+                            </div>
+                            <div class="funcionalidade-card">
+                                <div class="funcionalidade-icon"><i class="fas fa-book-open"></i></div>
+                                <h4>Objetos de Conhecimento</h4>
+                                <p>Regulando os contextos e habilidades</p>
+                            </div>
+                            <div class="funcionalidade-card">
+                                <div class="funcionalidade-icon"><i class="fas fa-clipboard-list"></i></div>
+                                <h4>Avaliações</h4>
+                                <p>Citar o gerencial avaliações</p>
+                            </div>
+                            <div class="funcionalidade-card">
+                                <div class="funcionalidade-icon"><i class="fas fa-chart-bar"></i></div>
+                                <h4>Notas</h4>
+                                <p>Lançar notas e possíveis</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="page" id="diary">
+                <div class="page-header">
+                    <h1 class="page-title">Anotações Pessoais</h1>
+                    <p class="page-subtitle">Registre e visualize anotações diárias</p>
+                </div>
+
+                <div class="diary-container">
+                    <div class="diary-editor">
+                        <h3>Nova Anotação</h3>
+                        <form id="diaryForm">
+                            <div class="form-group">
+                                <label for="diaryDate" class="form-label">Data</label>
+                                <input type="date" id="diaryDate" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="diaryTitle" class="form-label">Título</label>
+                                <input type="text" id="diaryTitle" class="form-input" placeholder="Título da anotação" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="diaryContent" class="form-label">Conteúdo</label>
+                                <textarea id="diaryContent" class="form-input" rows="5" placeholder="Escreva sua anotação aqui..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn primary">Salvar Anotação</button>
+                        </form>
+                    </div>
+
+                    <div class="diary-entries">
+                        <h3>Anotações Recentes</h3>
+                        <div class="entries-list" id="entriesList">
+                        
                         </div>
                     </div>
                 </div>
@@ -960,277 +983,281 @@
                     <p class="page-subtitle">Gerencie os usuários com acesso ao sistema</p>
                 </div>
 
-                <div class="table-header">
-                    <div class="search-bar">
-                        <input type="text" placeholder="Buscar usuários...">
-                    </div>
-                    <div class="table-actions">
-                        <button class="btn primary" id="addUserBtn">+ Adicionar Usuário</button>
-                    </div>
-                </div>
-
-                <div class="users-grid">
-                    <div class="user-card">
-                        <div class="user-header">
-                            <div class="user-avatar">AS</div>
-                            <div class="user-info">
-                                <h3>Ana Silva</h3>
-                                <div class="user-role">Administrador</div>
-                            </div>
+                <div class="users-container">
+                    <div class="table-header">
+                        <div class="search-bar">
+                            <input type="text" placeholder="Buscar usuários...">
                         </div>
-                        <div class="user-details">
-                            <div class="user-detail">
-                                <span class="label">E-mail:</span>
-                                <span class="value">ana.silva@escola.edu.br</span>
-                            </div>
-                            <div class="user-detail">
-                                <span class="label">Telefone:</span>
-                                <span class="value">(11) 99999-1234</span>
-                            </div>
-                            <div class="user-detail">
-                                <span class="label">Departamento:</span>
-                                <span class="value">Secretaria</span>
-                            </div>
-                            <div class="user-detail">
-                                <span class="label">Último acesso:</span>
-                                <span class="value">Hoje, 09:45</span>
-                            </div>
-                        </div>
-                        <div class="user-actions">
-                            <button class="btn">Editar</button>
-                            <span class="status-badge active">Ativo</span>
+                        <div class="table-actions">
+                            <button class="btn primary" id="addUserBtn"><i class="fas fa-plus"></i> Adicionar Usuário</button>
                         </div>
                     </div>
 
-                    <div class="user-card">
-                        <div class="user-header">
-                            <div class="user-avatar">JS</div>
-                            <div class="user-info">
-                                <h3>João Santos</h3>
-                                <div class="user-role">Coordenador</div>
+                    <div class="users-grid">
+                        <div class="user-card">
+                            <div class="user-header">
+                                <div class="user-avatar">AS</div>
+                                <div class="user-info">
+                                    <h3>Ana Silva</h3>
+                                    <div class="user-role">Administrador</div>
+                                </div>
+                            </div>
+                            <div class="user-details">
+                                <div class="user-detail">
+                                    <span class="label">E-mail:</span>
+                                    <span class="value">ana.silva@escola.edu.br</span>
+                                </div>
+                                <div class="user-detail">
+                                    <span class="label">Telefone:</span>
+                                    <span class="value">(11) 99999-1234</span>
+                                </div>
+                                <div class="user-detail">
+                                    <span class="label">Departamento:</span>
+                                    <span class="value">Secretaria</span>
+                                </div>
+                                <div class="user-detail">
+                                    <span class="label">Último acesso:</span>
+                                    <span class="value">Hoje, 09:45</span>
+                                </div>
+                            </div>
+                            <div class="user-actions">
+                                <button class="btn">Editar</button>
+                                <span class="status-badge active">Ativo</span>
                             </div>
                         </div>
-                        <div class="user-details">
-                            <div class="user-detail">
-                                <span class="label">E-mail:</span>
-                                <span class="value">joao.santos@escola.edu.br</span>
-                            </div>
-                            <div class="user-detail">
-                                <span class="label">Telefone:</span>
-                                <span class="value">(11) 98888-5678</span>
-                            </div>
-                            <div class="user-detail">
-                                <span class="label">Departamento:</span>
-                                <span class="value">Coordenação</span>
-                            </div>
-                            <div class="user-detail">
-                                <span class="label">Último acesso:</span>
-                                <span class="value">Ontem, 14:20</span>
-                            </div>
-                        </div>
-                        <div class="user-actions">
-                            <button class="btn">Editar</button>
-                            <span class="status-badge active">Ativo</span>
-                        </div>
-                    </div>
 
-                    <div class="user-card">
-                        <div class="user-header">
-                            <div class="user-avatar">MC</div>
-                            <div class="user-info">
-                                <h3>Maria Costa</h3>
-                                <div class="user-role">Secretária</div>
+                        <div class="user-card">
+                            <div class="user-header">
+                                <div class="user-avatar">JS</div>
+                                <div class="user-info">
+                                    <h3>João Santos</h3>
+                                    <div class="user-role">Coordenador</div>
+                                </div>
+                            </div>
+                            <div class="user-details">
+                                <div class="user-detail">
+                                    <span class="label">E-mail:</span>
+                                    <span class="value">joao.santos@escola.edu.br</span>
+                                </div>
+                                <div class="user-detail">
+                                    <span class="label">Telefone:</span>
+                                    <span class="value">(11) 98888-5678</span>
+                                </div>
+                                <div class="user-detail">
+                                    <span class="label">Departamento:</span>
+                                    <span class="value">Coordenação</span>
+                                </div>
+                                <div class="user-detail">
+                                    <span class="label">Último acesso:</span>
+                                    <span class="value">Ontem, 14:20</span>
+                                </div>
+                            </div>
+                            <div class="user-actions">
+                                <button class="btn">Editar</button>
+                                <span class="status-badge active">Ativo</span>
                             </div>
                         </div>
-                        <div class="user-details">
-                            <div class="user-detail">
-                                <span class="label">E-mail:</span>
-                                <span class="value">maria.costa@escola.edu.br</span>
-                            </div>
-                            <div class="user-detail">
-                                <span class="label">Telefone:</span>
-                                <span class="value">(11) 97777-9012</span>
-                            </div>
-                            <div class="user-detail">
-                                <span class="label">Departamento:</span>
-                                <span class="value">Secretaria</span>
-                            </div>
-                            <div class="user-detail">
-                                <span class="label">Último acesso:</span>
-                                <span class="value">Hoje, 08:30</span>
-                            </div>
-                        </div>
-                        <div class="user-actions">
-                            <button class="btn">Editar</button>
-                            <span class="status-badge active">Ativo</span>
-                        </div>
-                    </div>
 
-                    <div class="user-card">
-                        <div class="user-header">
-                            <div class="user-avatar">PL</div>
-                            <div class="user-info">
-                                <h3>Pedro Lima</h3>
-                                <div class="user-role">Professor</div>
+                        <div class="user-card">
+                            <div class="user-header">
+                                <div class="user-avatar">MC</div>
+                                <div class="user-info">
+                                    <h3>Maria Costa</h3>
+                                    <div class="user-role">Secretária</div>
+                                </div>
+                            </div>
+                            <div class="user-details">
+                                <div class="user-detail">
+                                    <span class="label">E-mail:</span>
+                                    <span class="value">maria.costa@escola.edu.br</span>
+                                </div>
+                                <div class="user-detail">
+                                    <span class="label">Telefone:</span>
+                                    <span class="value">(11) 97777-9012</span>
+                                </div>
+                                <div class="user-detail">
+                                    <span class="label">Departamento:</span>
+                                    <span class="value">Secretaria</span>
+                                </div>
+                                <div class="user-detail">
+                                    <span class="label">Último acesso:</span>
+                                    <span class="value">Hoje, 08:30</span>
+                                </div>
+                            </div>
+                            <div class="user-actions">
+                                <button class="btn">Editar</button>
+                                <span class="status-badge active">Ativo</span>
                             </div>
                         </div>
-                        <div class="user-details">
-                            <div class="user-detail">
-                                <span class="label">E-mail:</span>
-                                <span class="value">pedro.lima@escola.edu.br</span>
+
+                        <div class="user-card">
+                            <div class="user-header">
+                                <div class="user-avatar">PL</div>
+                                <div class="user-info">
+                                    <h3>Pedro Lima</h3>
+                                    <div class="user-role">Professor</div>
+                                </div>
                             </div>
-                            <div class="user-detail">
-                                <span class="label">Telefone:</span>
-                                <span class="value">(11) 96666-3456</span>
+                            <div class="user-details">
+                                <div class="user-detail">
+                                    <span class="label">E-mail:</span>
+                                    <span class="value">pedro.lima@escola.edu.br</span>
+                                </div>
+                                <div class="user-detail">
+                                    <span class="label">Telefone:</span>
+                                    <span class="value">(11) 96666-3456</span>
+                                </div>
+                                <div class="user-detail">
+                                    <span class="label">Departamento:</span>
+                                    <span class="value">Corpo Docente</span>
+                                </div>
+                                <div class="user-detail">
+                                    <span class="label">Último acesso:</span>
+                                    <span class="value">2 dias atrás</span>
+                                </div>
                             </div>
-                            <div class="user-detail">
-                                <span class="label">Departamento:</span>
-                                <span class="value">Corpo Docente</span>
+                            <div class="user-actions">
+                                <button class="btn">Editar</button>
+                                <span class="status-badge inactive">Inativo</span>
                             </div>
-                            <div class="user-detail">
-                                <span class="label">Último acesso:</span>
-                                <span class="value">2 dias atrás</span>
-                            </div>
-                        </div>
-                        <div class="user-actions">
-                            <button class="btn">Editar</button>
-                            <span class="status-badge inactive">Inativo</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            
+        
             <div class="page" id="settings">
                 <div class="page-header">
                     <h1 class="page-title">Configurações</h1>
                     <p class="page-subtitle">Gerencie as configurações do sistema</p>
                 </div>
 
-                <div class="settings-grid">
-                    <div class="setting-section">
-                        <h3 style="margin-bottom: 20px;">Informações da Escola</h3>
-                        <div class="setting-row">
-                            <div class="setting-info">
-                                <h4>Nome da Escola</h4>
-                                <p>Escola Municipal Dom Paulo mc Hugh</p>
+                <div class="settings-container">
+                    <div class="settings-grid">
+                        <div class="setting-section">
+                            <h3 class="setting-section-title">Informações da Escola</h3>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>Nome da Escola</h4>
+                                    <p>Escola Municipal Dom Paulo mc Hugh</p>
+                                </div>
+                                <button class="btn">Editar</button>
                             </div>
-                            <button class="btn">Editar</button>
-                        </div>
-                        <div class="setting-row">
-                            <div class="setting-info">
-                                <h4>Endereço</h4>
-                                <p>Av. Mario Andreazza, 958 Sao Jorge. 69104-050 Itacoatiara - AM</p>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>Endereço</h4>
+                                    <p>Av. Mario Andreazza, 958 Sao Jorge. 69104-050 Itacoatiara - AM</p>
+                                </div>
+                                <button class="btn">Editar</button>
                             </div>
-                            <button class="btn">Editar</button>
-                        </div>
-                        <div class="setting-row">
-                            <div class="setting-info">
-                                <h4>Telefone</h4>
-                                <p>(92) 99424-7350</p>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>Telefone</h4>
+                                    <p>(92) 99424-7350</p>
+                                </div>
+                                <button class="btn">Editar</button>
                             </div>
-                            <button class="btn">Editar</button>
-                        </div>
-                        <div class="setting-row">
-                            <div class="setting-info">
-                                <h4>E-mail</h4>
-                                <p>contato@escoladompaulo.edu.br</p>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>E-mail</h4>
+                                    <p>contato@escoladompaulo.edu.br</p>
+                                </div>
+                                <button class="btn">Editar</button>
                             </div>
-                            <button class="btn">Editar</button>
                         </div>
-                    </div>
 
-                    <div class="setting-section">
-                        <h3 style="margin-bottom: 20px;">Instalações da Escola</h3>
-                        <div class="facilities-grid">
-                            <div class="facility-item">
-                                <div class="facility-count">12</div>
-                                <div class="facility-label">Salas de Aula</div>
-                            </div>
-                            <div class="facility-item">
-                                <div class="facility-count">1</div>
-                                <div class="facility-label">Cantina</div>
-                            </div>
-                            <div class="facility-item">
-                                <div class="facility-count">3</div>
-                                <div class="facility-label">Laboratórios</div>
-                            </div>
-                            <div class="facility-item">
-                                <div class="facility-count">1</div>
-                                <div class="facility-label">Biblioteca</div>
-                            </div>
-                            <div class="facility-item">
-                                <div class="facility-count">6</div>
-                                <div class="facility-label">Banheiros</div>
-                            </div>
-                            <div class="facility-item">
-                                <div class="facility-count">2</div>
-                                <div class="facility-label">Quadras</div>
+                        <div class="setting-section">
+                            <h3 class="setting-section-title">Instalações da Escola</h3>
+                            <div class="facilities-grid">
+                                <div class="facility-item">
+                                    <div class="facility-count">12</div>
+                                    <div class="facility-label">Salas de Aula</div>
+                                </div>
+                                <div class="facility-item">
+                                    <div class="facility-count">1</div>
+                                    <div class="facility-label">Cantina</div>
+                                </div>
+                                <div class="facility-item">
+                                    <div class="facility-count">3</div>
+                                    <div class="facility-label">Laboratórios</div>
+                                </div>
+                                <div class="facility-item">
+                                    <div class="facility-count">1</div>
+                                    <div class="facility-label">Biblioteca</div>
+                                </div>
+                                <div class="facility-item">
+                                    <div class="facility-count">6</div>
+                                    <div class="facility-label">Banheiros</div>
+                                </div>
+                                <div class="facility-item">
+                                    <div class="facility-count">2</div>
+                                    <div class="facility-label">Quadras</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="setting-section">
-                        <h3 style="margin-bottom: 20px;">Preferências do Sistema</h3>
-                        <div class="setting-row">
-                            <div class="setting-info">
-                                <h4>Notificações por E-mail</h4>
-                                <p>Receba alertas importantes por e-mail</p>
+                        <div class="setting-section">
+                            <h3 class="setting-section-title">Preferências do Sistema</h3>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>Notificações por E-mail</h4>
+                                    <p>Receba alertas importantes por e-mail</p>
+                                </div>
+                                <div class="toggle-switch active"></div>
                             </div>
-                            <div class="toggle-switch active"></div>
-                        </div>
-                        <div class="setting-row">
-                            <div class="setting-info">
-                                <h4>Modo de Manutenção</h4>
-                                <p>Desative o acesso de usuários durante manutenções</p>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>Modo de Manutenção</h4>
+                                    <p>Desative o acesso de usuários durante manutenções</p>
+                                </div>
+                                <div class="toggle-switch"></div>
                             </div>
-                            <div class="toggle-switch"></div>
-                        </div>
-                        <div class="setting-row">
-                            <div class="setting-info">
-                                <h4>Backup Automático</h4>
-                                <p>Realize backups automáticos diariamente</p>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>Backup Automático</h4>
+                                    <p>Realize backups automáticos diariamente</p>
+                                </div>
+                                <div class="toggle-switch active"></div>
                             </div>
-                            <div class="toggle-switch active"></div>
                         </div>
-                    </div>
 
-                    <div class="setting-section">
-                        <h3 style="margin-bottom: 20px;">Informações da Conta</h3>
-                        <div class="setting-row">
-                            <div class="setting-info">
-                                <h4>Nome do Usuário</h4>
-                                <p>Administrador</p>
+                        <div class="setting-section">
+                            <h3 class="setting-section-title">Informações da Conta</h3>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>Nome do Usuário</h4>
+                                    <p>Administrador</p>
+                                </div>
+                                <button class="btn">Editar Perfil</button>
                             </div>
-                            <button class="btn">Editar Perfil</button>
-                        </div>
-                        <div class="setting-row">
-                            <div class="setting-info">
-                                <h4>E-mail</h4>
-                                <p>contato@escoladompaulo.edu.br</p>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>E-mail</h4>
+                                    <p>contato@escoladompaulo.edu.br</p>
+                                </div>
+                                <button class="btn">Alterar E-mail</button>
                             </div>
-                            <button class="btn">Alterar E-mail</button>
-                        </div>
-                        <div class="setting-row">
-                            <div class="setting-info">
-                                <h4>Senha</h4>
-                                <p>Última alteração: 15/03/2023</p>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>Senha</h4>
+                                    <p>Última alteração: 15/03/2023</p>
+                                </div>
+                                <button class="btn">Alterar Senha</button>
                             </div>
-                            <button class="btn">Alterar Senha</button>
                         </div>
-                    </div>
 
-                    <div class="setting-section">
-                        <h3 style="margin-bottom: 20px;">Versão do Sistema</h3>
-                        <div class="setting-row">
-                            <div class="setting-info">
-                                <h4>Versão Atual</h4>
-                                <p>v2.1.5</p>
+                        <div class="setting-section">
+                            <h3 class="setting-section-title">Versão do Sistema</h3>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>Versão Atual</h4>
+                                    <p>v2.1.5</p>
+                                </div>
+                                <div>Última atualização: 10/05/2023</div>
                             </div>
-                            <div>Última atualização: 10/05/2023</div>
-                        </div>
-                        <div style="text-align: center; margin-top: 20px;">
-                            <button class="btn primary">Verificar Atualizações</button>
+                            <div style="text-align: center; margin-top: 20px;">
+                                <button class="btn primary">Verificar Atualizações</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1295,6 +1322,304 @@
             <div class="modal-footer">
                 <button class="btn" id="cancelUserBtn">Cancelar</button>
                 <button class="btn primary" id="saveUserBtn">Salvar Usuário</button>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="modal" id="addStudentModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Adicionar Novo Aluno</h3>
+                <button class="modal-close" id="closeStudentModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="student-form-tabs">
+                    <div class="tabs">
+                        <button class="tab-button active" data-tab="basic-info">Informações Básicas</button>
+                        <button class="tab-button" data-tab="personal-info">Informações Pessoais</button>
+                        <button class="tab-button" data-tab="documents">Documentos</button>
+                        <button class="tab-button" data-tab="responsible">Responsável</button>
+                        <button class="tab-button" data-tab="social">Programa Social</button>
+                    </div>
+                    
+                    <form id="addStudentForm">
+                        
+                        <div class="tab-content active" id="basic-info-tab">
+                            <div class="form-group">
+                                <label for="studentPhoto" class="form-label">Foto do Aluno</label>
+                                <div class="photo-upload">
+                                    <div class="photo-placeholder">
+                                        <i class="fas fa-camera"></i>
+                                        <span>Adicionar Foto</span>
+                                    </div>
+                                    <input type="file" id="studentPhoto" accept="image/*" style="display: none;">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="studentName" class="form-label">Nome Completo *</label>
+                                <input type="text" id="studentName" class="form-input" placeholder="Nome completo do aluno" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="studentMatricula" class="form-label">Nº de Matrícula *</label>
+                                <input type="text" id="studentMatricula" class="form-input" placeholder="Número de matrícula" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="studentYear" class="form-label">Ano *</label>
+                                    <select id="studentYear" class="form-input" required>
+                                        <option value="">Selecione o ano</option>
+                                        <option value="1">1º Ano</option>
+                                        <option value="2">2º Ano</option>
+                                        <option value="3">3º Ano</option>
+                                        <option value="4">4º Ano</option>
+                                        <option value="5">5º Ano</option>
+                                        <option value="6">6º Ano</option>
+                                        <option value="7">7º Ano</option>
+                                        <option value="8">8º Ano</option>
+                                        <option value="9">9º Ano</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="studentClass" class="form-label">Turma *</label>
+                                    <select id="studentClass" class="form-input" required>
+                                        <option value="">Selecione a turma</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="D">D</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="studentStatus" class="form-label">Status *</label>
+                                <select id="studentStatus" class="form-input" required>
+                                    <option value="active">Ativo</option>
+                                    <option value="inactive">Inativo</option>
+                                    <option value="transferred">Transferido</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="tab-content" id="personal-info-tab">
+                            <div class="form-group">
+                                <label for="studentBirthDate" class="form-label">Data de Nascimento *</label>
+                                <input type="date" id="studentBirthDate" class="form-input" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="studentGender" class="form-label">Gênero *</label>
+                                <select id="studentGender" class="form-input" required>
+                                    <option value="">Selecione o gênero</option>
+                                    <option value="male">Masculino</option>
+                                    <option value="female">Feminino</option>
+                                    <option value="other">Outro</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="studentEmail" class="form-label">E-mail</label>
+                                <input type="email" id="studentEmail" class="form-input" placeholder="E-mail do aluno">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="studentPhone" class="form-label">Telefone</label>
+                                <input type="tel" id="studentPhone" class="form-input" placeholder="Telefone do aluno">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="studentAddress" class="form-label">Endereço *</label>
+                                <textarea id="studentAddress" class="form-input" rows="3" placeholder="Endereço completo" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="studentAdditionalInfo" class="form-label">Informações Adicionais</label>
+                                <textarea id="studentAdditionalInfo" class="form-input" rows="3" placeholder="Informações adicionais sobre o aluno"></textarea>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="tab-content" id="documents-tab">
+                            <div class="form-group">
+                                <label for="studentRG" class="form-label">RG</label>
+                                <input type="text" id="studentRG" class="form-input" placeholder="Número do RG">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="studentCPF" class="form-label">CPF</label>
+                                <input type="text" id="studentCPF" class="form-input" placeholder="Número do CPF">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="studentBirthCertificate" class="form-label">Certidão de Nascimento</label>
+                                <input type="text" id="studentBirthCertificate" class="form-input" placeholder="Número da certidão">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="studentVaccineCard" class="form-label">Carteira de Vacinação</label>
+                                <div class="file-upload">
+                                    <input type="file" id="studentVaccineCard" accept=".pdf,.jpg,.jpeg,.png" style="display: none;">
+                                    <button type="button" class="btn" id="uploadVaccineCard">Anexar Carteira de Vacinação</button>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="studentSchoolHistory" class="form-label">Histórico Escolar</label>
+                                <div class="file-upload">
+                                    <input type="file" id="studentSchoolHistory" accept=".pdf,.jpg,.jpeg,.png" style="display: none;">
+                                    <button type="button" class="btn" id="uploadSchoolHistory">Anexar Histórico Escolar</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Aba: Responsável -->
+                        <div class="tab-content" id="responsible-tab">
+                            <div class="form-group">
+                                <label for="responsibleName" class="form-label">Nome do Responsável *</label>
+                                <input type="text" id="responsibleName" class="form-input" placeholder="Nome completo do responsável" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="responsibleCPF" class="form-label">CPF do Responsável</label>
+                                <input type="text" id="responsibleCPF" class="form-input" placeholder="CPF do responsável">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="responsibleRG" class="form-label">RG do Responsável</label>
+                                <input type="text" id="responsibleRG" class="form-input" placeholder="RG do responsável">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="responsibleEmail" class="form-label">E-mail do Responsável</label>
+                                <input type="email" id="responsibleEmail" class="form-input" placeholder="E-mail do responsável">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="responsiblePhone" class="form-label">Telefone do Responsável *</label>
+                                <input type="tel" id="responsiblePhone" class="form-input" placeholder="Telefone do responsável" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="responsibleRelationship" class="form-label">Parentesco *</label>
+                                <select id="responsibleRelationship" class="form-input" required>
+                                    <option value="">Selecione o parentesco</option>
+                                    <option value="mother">Mãe</option>
+                                    <option value="father">Pai</option>
+                                    <option value="grandmother">Avó</option>
+                                    <option value="grandfather">Avô</option>
+                                    <option value="uncle">Tio</option>
+                                    <option value="aunt">Tia</option>
+                                    <option value="other">Outro</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Aba: Programa Social -->
+                        <div class="tab-content" id="social-tab">
+                            <div class="form-group">
+                                <label class="form-label">Está no Governo da Escola?</label>
+                                <div style="display: flex; gap: 15px;">
+                                    <label style="display: flex; align-items: center;">
+                                        <input type="radio" name="schoolGovernment" value="yes"> Sim
+                                    </label>
+                                    <label style="display: flex; align-items: center;">
+                                        <input type="radio" name="schoolGovernment" value="no" checked> Não
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Vencido sonora CONOS?</label>
+                                <div style="display: flex; gap: 15px;">
+                                    <label style="display: flex; align-items: center;">
+                                        <input type="radio" name="conos" value="yes"> Sim
+                                    </label>
+                                    <label style="display: flex; align-items: center;">
+                                        <input type="radio" name="conos" value="no" checked> Não
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Atuar PCP?</label>
+                                <div style="display: flex; gap: 15px;">
+                                    <label style="display: flex; align-items: center;">
+                                        <input type="radio" name="pcp" value="yes"> Sim
+                                    </label>
+                                    <label style="display: flex; align-items: center;">
+                                        <input type="radio" name="pcp" value="no" checked> Não
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">O aluno vem deste território?</label>
+                                <div style="display: flex; gap: 15px;">
+                                    <label style="display: flex; align-items: center;">
+                                        <input type="radio" name="territory" value="yes"> Sim
+                                    </label>
+                                    <label style="display: flex; align-items: center;">
+                                        <input type="radio" name="territory" value="no" checked> Não
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="motherName" class="form-label">Nome da Mãe</label>
+                                <input type="text" id="motherName" class="form-input" placeholder="Nome completo da mãe">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="motherPhone" class="form-label">Telefone da Mãe</label>
+                                <input type="tel" id="motherPhone" class="form-input" placeholder="Telefone da mãe">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="motherCPF" class="form-label">CPF da Mãe</label>
+                                <input type="text" id="motherCPF" class="form-input" placeholder="CPF da mãe">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="susCard" class="form-label">Número do Cartão SUS</label>
+                                <input type="text" id="susCard" class="form-input" placeholder="Número do cartão SUS">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Atuar JED</label>
+                                <div style="display: flex; gap: 15px;">
+                                    <label style="display: flex; align-items: center;">
+                                        <input type="radio" name="jed" value="yes"> Sim
+                                    </label>
+                                    <label style="display: flex; align-items: center;">
+                                        <input type="radio" name="jed" value="no" checked> Não
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Transporte Escolar?</label>
+                                <div style="display: flex; gap: 15px;">
+                                    <label style="display: flex; align-items: center;">
+                                        <input type="radio" name="transport" value="yes"> Sim
+                                    </label>
+                                    <label style="display: flex; align-items: center;">
+                                        <input type="radio" name="transport" value="no" checked> Não
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" id="cancelStudentBtn">Cancelar</button>
+                <button class="btn primary" id="saveStudentBtn">Salvar Aluno</button>
             </div>
         </div>
     </div>
