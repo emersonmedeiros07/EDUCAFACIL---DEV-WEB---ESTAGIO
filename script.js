@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // ============ DADOS DE EXEMPLO ============
     const alunos = [
         {
             id: 1,
@@ -128,9 +127,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     ];
 
-    // ============ FUNÇÕES PRINCIPAIS ============
-    
-    // Função para preencher a tabela de alunos
     function preencherTabelaAlunos() {
         const tbody = document.getElementById('studentsTableBody');
         tbody.innerHTML = '';
@@ -153,12 +149,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Função para visualizar detalhes do aluno
     window.visualizarAluno = function(id) {
         const aluno = alunos.find(a => a.id === id);
         if (!aluno) return;
 
-        // Preencher os detalhes do aluno
         const container = document.getElementById('studentDetailsContainer');
         container.innerHTML = `
             <div class="student-header">
@@ -268,26 +262,23 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `;
 
-        // Navegar para a página de detalhes do aluno
         navegarParaPagina('student-details');
     };
 
-    // Função para voltar para a lista de alunos
+    
     window.voltarParaListaAlunos = function() {
         navegarParaPagina('students');
     };
 
-    // Sistema de navegação entre páginas
+    
     function navegarParaPagina(pageId) {
-        // Esconder todas as páginas
+        
         document.querySelectorAll('.page').forEach(page => {
             page.classList.remove('active');
         });
 
-        // Mostrar a página selecionada
         document.getElementById(pageId).classList.add('active');
 
-        // Atualizar menu ativo
         document.querySelectorAll('.sidebar-menu a').forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('data-page') === pageId) {
@@ -296,7 +287,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ============ SISTEMA DE AUTENTICAÇÃO ============
     const loginForm = document.getElementById('loginForm');
     const registerForm = document.getElementById('registerForm');
     const loginErrorMessage = document.getElementById('loginErrorMessage');
@@ -318,7 +308,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const loadingOverlay = document.getElementById('loadingOverlay');
     const backToLoginFromRecovery = document.getElementById('backToLoginFromRecovery');
 
-    // Elementos de recuperação de senha
     const recoveryStep1 = document.getElementById('recoveryStep1');
     const recoveryStep2 = document.getElementById('recoveryStep2');
     const recoveryStep3 = document.getElementById('recoveryStep3');
@@ -331,26 +320,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const recoverySuccessMessage = document.getElementById('recoverySuccessMessage');
     const recoveryErrorMessage = document.getElementById('recoveryErrorMessage');
 
-    // Toggle password visibility
     togglePassword.addEventListener('click', function() {
         const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
         passwordInput.setAttribute('type', type);
         this.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
     });
 
-    // Show loading
     function showLoading(button) {
         button.classList.add('loading');
         loadingOverlay.classList.add('active');
     }
 
-    // Hide loading
     function hideLoading(button) {
         button.classList.remove('loading');
         loadingOverlay.classList.remove('active');
     }
 
-    // Form navigation
     function showLoginForm() {
         loginFormContainer.classList.add('active');
         registerFormContainer.classList.remove('active');
@@ -381,13 +366,13 @@ document.addEventListener('DOMContentLoaded', function() {
         showRecoveryForm();
     });
 
-    // CORREÇÃO: Adicionar evento para o botão "Fazer login" na tela de recuperação de senha
+
     backToLoginFromRecovery.addEventListener('click', function(e) {
         e.preventDefault();
         showLoginForm();
     });
 
-    // Login form
+    
     loginForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
@@ -412,7 +397,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1500);
     });
 
-    // Register form
+    
     registerForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
@@ -441,29 +426,28 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1500);
     });
 
-    // Logout
+    
     logoutBtn.addEventListener('click', function() {
         appContainer.classList.remove('active');
         authPage.style.display = 'flex';
         showLoginForm();
     });
 
-    // ============ SISTEMA DE RECUPERAÇÃO DE SENHA CORRIGIDO ============
-    // Função para avançar para a próxima etapa
+    
     function avancarParaEtapa(etapaAtual, proximaEtapa) {
         document.querySelectorAll('.recovery-form').forEach(form => {
             form.classList.remove('active');
         });
         document.getElementById(proximaEtapa).classList.add('active');
         
-        // Atualizar os passos
+        
         document.querySelectorAll('.step').forEach(step => {
             step.classList.remove('active');
         });
         document.getElementById(`step${proximaEtapa.charAt(proximaEtapa.length-1)}`).classList.add('active');
     }
 
-    // Enviar código
+    
     sendCodeButton.addEventListener('click', function(e) {
         e.preventDefault();
         const email = document.getElementById('recoveryEmail').value;
@@ -475,7 +459,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 recoverySuccessMessage.classList.add('show');
                 recoveryErrorMessage.classList.remove('show');
                 
-                // Avançar para a próxima etapa
+                
                 avancarParaEtapa('recoveryStep1', 'recoveryStep2');
                 
                 hideLoading(sendCodeButton);
@@ -490,7 +474,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Verificar código
+    
     verifyCodeButton.addEventListener('click', function(e) {
         e.preventDefault();
         const code1 = document.getElementById('code1').value;
@@ -504,7 +488,7 @@ document.addEventListener('DOMContentLoaded', function() {
             showLoading(verifyCodeButton);
             
             setTimeout(() => {
-                // Avançar para a próxima etapa
+                
                 avancarParaEtapa('recoveryStep2', 'recoveryStep3');
                 hideLoading(verifyCodeButton);
             }, 1500);
@@ -514,7 +498,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Redefinir senha
+    
     resetPasswordButton.addEventListener('click', function(e) {
         e.preventDefault();
         const newPassword = document.getElementById('newPassword').value;
@@ -546,19 +530,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Voltar para a etapa de e-mail
+    
     backToEmailStep.addEventListener('click', function(e) {
         e.preventDefault();
         avancarParaEtapa('recoveryStep2', 'recoveryStep1');
     });
 
-    // Voltar para a etapa de código
+    
     backToCodeStep.addEventListener('click', function(e) {
         e.preventDefault();
         avancarParaEtapa('recoveryStep3', 'recoveryStep2');
     });
 
-    // Reenviar código
+    
     resendCode.addEventListener('click', function(e) {
         e.preventDefault();
         recoverySuccessMessage.textContent = 'Código reenviado com sucesso!';
@@ -569,7 +553,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 3000);
     });
 
-    // ============ SISTEMA DE ALUNOS ============
+    
     const addStudentBtn = document.getElementById('addStudentBtn');
     const addStudentModal = document.getElementById('addStudentModal');
     const closeStudentModal = document.getElementById('closeStudentModal');
@@ -577,12 +561,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const saveStudentBtn = document.getElementById('saveStudentBtn');
     const studentFormTabs = document.querySelectorAll('.tab-button');
 
-    // Abrir modal de adicionar aluno
+    
     addStudentBtn.addEventListener('click', function() {
         addStudentModal.classList.add('active');
     });
 
-    // Fechar modal de adicionar aluno
+    
     closeStudentModal.addEventListener('click', function() {
         addStudentModal.classList.remove('active');
     });
@@ -591,7 +575,7 @@ document.addEventListener('DOMContentLoaded', function() {
         addStudentModal.classList.remove('active');
     });
 
-    // Salvar aluno
+    
     saveStudentBtn.addEventListener('click', function() {
         const studentName = document.getElementById('studentName').value;
         const studentMatricula = document.getElementById('studentMatricula').value;
@@ -602,7 +586,7 @@ document.addEventListener('DOMContentLoaded', function() {
             showLoading(saveStudentBtn);
             
             setTimeout(() => {
-                // Adicionar o aluno à lista
+                
                 const novoAluno = {
                     id: alunos.length + 1,
                     nome: studentName,
@@ -628,7 +612,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 showToast('Aluno adicionado com sucesso!', 'success');
                 addStudentModal.classList.remove('active');
                 
-                // Resetar formulário
+                
                 document.getElementById('addStudentForm').reset();
                 
                 hideLoading(saveStudentBtn);
@@ -638,28 +622,27 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Navegação por abas no formulário de aluno
+    
     studentFormTabs.forEach(tab => {
         tab.addEventListener('click', function() {
             const tabId = this.getAttribute('data-tab');
             
-            // Remover classe active de todas as abas
+            
             studentFormTabs.forEach(t => t.classList.remove('active'));
             
-            // Adicionar classe active à aba clicada
+            
             this.classList.add('active');
             
-            // Esconder todos os conteúdos de abas
+            
             document.querySelectorAll('.tab-content').forEach(content => {
                 content.classList.remove('active');
             });
             
-            // Mostrar o conteúdo da aba clicada
+            
             document.getElementById(`${tabId}-tab`).classList.add('active');
         });
     });
 
-    // Upload de foto
     const photoPlaceholder = document.querySelector('.photo-placeholder');
     const studentPhoto = document.getElementById('studentPhoto');
     
@@ -679,9 +662,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // ============ OUTRAS FUNCIONALIDADES ============
-    
-    // Menu navigation
     const menuLinks = document.querySelectorAll('.sidebar-menu a');
     
     menuLinks.forEach(link => {
@@ -692,7 +672,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Toast notification system
+    
     function showToast(message, type = 'info') {
         let toastContainer = document.querySelector('.toast-container');
         if (!toastContainer) {
@@ -740,7 +720,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 5000);
     }
 
-    // Action buttons
+    
     document.querySelectorAll('.action-btn').forEach(button => {
         button.addEventListener('click', function() {
             if (this.classList.contains('view')) return; // Já tratado separadamente
@@ -749,15 +729,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Other buttons
+    
     document.querySelectorAll('.report-card button, .events-container button, .calendar-container button, .btn.primary').forEach(button => {
-        if (!button.id) { // Evitar duplicação com botões já tratados
+        if (!button.id) { 
             button.addEventListener('click', function() {
                 showToast('Funcionalidade em desenvolvimento!', 'info');
             });
         }
     });
 
-    // ============ INICIALIZAÇÃO ============
+    
     preencherTabelaAlunos();
 });
